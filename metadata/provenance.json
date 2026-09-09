@@ -1,0 +1,127 @@
+{
+  "files": [
+    {
+      "public_path": "annotations/reference.jsonl",
+      "source_sha256": "0b0bd62775a59c4f391dd4dd30191adf2446755b2f430cf9123bc9ef74573590"
+    },
+    {
+      "public_path": "code/evaluate_predictions.py",
+      "source_sha256": "88274d2a687c2e4d6d300d48377d86044b26807ea3f97c33307e349e0e7d63ae"
+    },
+    {
+      "public_path": "code/rehydrate_annotations.py",
+      "source_sha256": "25f1dd0a432c27590672621fcc7c3804f4ac72c1631adeae093957bf5cc04922"
+    },
+    {
+      "public_path": "LICENSE-CODE",
+      "source_sha256": "258375577c4010df0643b10d2a799c6bdebc5cb50b0429f34af58a254fa7ed65"
+    },
+    {
+      "public_path": "LICENSE-DATA",
+      "source_sha256": "0fd38db2413938a477038200afc34f9224995b0bcc13596a8dfe6a02def83cea"
+    },
+    {
+      "public_path": "THIRD_PARTY_NOTICES.md",
+      "source_sha256": "f1bf81656225af5a4bfa70ae99bbd1b798160e77dd5552d558c3f803cc8003d0"
+    },
+    {
+      "public_path": "prompts/01_initial_entity_guideline_induction.json",
+      "source_sha256": "f3a55224ef521f1499ca59b969c25f13c211a77f1703f2d984f028ec50bfaaa1"
+    },
+    {
+      "public_path": "prompts/02_entity_discrepancy_candidate.json",
+      "source_sha256": "dbc4fdc76f160c35f8b3858deddd5a0c52f9961b717288f0e939d04dbfa93aa0"
+    },
+    {
+      "public_path": "prompts/03_development_entity_annotation.json",
+      "source_sha256": "c26b9edf168446a3a1db228d9d51aa7f8dfe156fd7b5f43647d520458493a94b"
+    },
+    {
+      "public_path": "prompts/04_evaluation_entity_annotation.json",
+      "source_sha256": "dda4fbe2aa7cc1b2a5d249f607ac86d3b340134ea4efd59741b0a82c98221009"
+    },
+    {
+      "public_path": "prompts/05_initial_relation_guideline_induction.json",
+      "source_sha256": "cf5509fb548a971166681b01858786ac5876016580c949dd70da1ae6125d6eb9"
+    },
+    {
+      "public_path": "prompts/06_relation_discrepancy_candidate.json",
+      "source_sha256": "3584d9bdc42aebb959bb1ae70d919911b9d4782aadb1e62c2703989a2564d5fe"
+    },
+    {
+      "public_path": "prompts/07_development_relation_annotation.json",
+      "source_sha256": "20d8d67fce37ca928b11035b717804d52332b266929eaa7dc88b768b75fd17c4"
+    },
+    {
+      "public_path": "prompts/08_evaluation_relation_annotation.json",
+      "source_sha256": "c728141269e412885afb82427650cf45cd9b1e259e567359ab65e7e6ff007402"
+    },
+    {
+      "public_path": "prompts/09_evaluation_joint_annotation.json",
+      "source_sha256": "636446d98c433b95832b2cb4c398a96019298c5e90181d811edabf91cc79b6b4"
+    },
+    {
+      "public_path": "analysis/core_metrics.csv",
+      "source_sha256": "9d2d4e34ee4015e50f54a104e2e0c8ed33ee522413786b56b1b6a040afddc7fb"
+    },
+    {
+      "public_path": "analysis/core_contrasts.csv",
+      "source_sha256": "4d4d28538d08ac71134f79d28b7d9e32ebd1c7b95625c72f8ad768be7a290f14"
+    },
+    {
+      "public_path": "analysis/label_metrics.csv",
+      "source_sha256": "e40e592e2efd0ef8657ef98f85a24f33e44b0eaf8c43aa05651a92a4101df06c"
+    },
+    {
+      "public_path": "analysis/endpoint_diagnostics.csv",
+      "source_sha256": "006445d37adfcf58dd20bf8fbf96bbb0ba6a26b020bc553fb7a3974ab91a6ced"
+    },
+    {
+      "public_path": "analysis/mechanisms.csv",
+      "source_sha256": "74d3a3b3d633e0b00e9600b76c56463eb4c1ada969322af8330b15720feb4d67"
+    },
+    {
+      "public_path": "analysis/normality_sensitivity.csv",
+      "source_sha256": "c50d864485beac0b16b143fc143f06be76fe7255e68a04e3f74746b14122f696"
+    },
+    {
+      "public_path": "analysis/pairwise_agreement.csv",
+      "source_sha256": "7bb89730a0cc0df9bc102f87af1f4281ed298a4a4894eacf8eba663d311610ef"
+    },
+    {
+      "public_path": "analysis/trial_audit.csv",
+      "source_sha256": "cc3dc8f29fd3a770c1a154aab77a88df7ebeaa66ef242a71703808a4df794ddd"
+    },
+    {
+      "public_path": "analysis/sol_author_joint_contrasts.csv",
+      "source_sha256": "08c616b7f756a52989f28591e75b38695959cc494bd96e1d7b5764f429dad9a7"
+    },
+    {
+      "public_path": "analysis/deepseek_fewshot_scores.csv",
+      "source_sha256": "2671814e5580ad369e6dadab7d52c28efe507150ec4d8f7fccb76ded71c25fd9"
+    },
+    {
+      "public_path": "analysis/deepseek_fewshot_contrasts.csv",
+      "source_sha256": "75230e35f03823f422bfd2bd6564dd6ca3167b7e8f43293e8530846b17866202"
+    },
+    {
+      "public_path": "analysis/sol_fewshot_scores.csv",
+      "source_sha256": "bdc97826da1ea7217cc91d7a37b57bf370e78f559efe6be0a17cd41d320239a4"
+    },
+    {
+      "public_path": "analysis/sol_fewshot_contrasts.csv",
+      "source_sha256": "c3870e690b4e53ba0ba46b15abb8bda5eef1a5ea781e29f2b603ec1241cbf799"
+    },
+    {
+      "public_path": "analysis/deepseek_high_max_scores.csv",
+      "source_sha256": "e1ba83eb252cd3f74d97d2214aa8f5102829a90098a18e84049412c2fa33d5f4"
+    },
+    {
+      "public_path": "analysis/deepseek_high_max_contrasts.csv",
+      "source_sha256": "3e9fcf870f1eda08f800dea85c73a87e0d9f531ed47960dfa86c9921877c437a"
+    }
+  ],
+  "reference_source_sha256": "9fd58bb642beaff99bdd51067d204f948dbb81803083ed52728e4ef10fcfc522",
+  "reference_reconstruction_documents": 50,
+  "reference_reconstruction_spans": 1988
+}

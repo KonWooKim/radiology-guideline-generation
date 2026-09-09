@@ -1,0 +1,220 @@
+{
+  "representation": "Report-text-redacted structured guidelines, not the verbatim inference prompt",
+  "source_sha256": "a31ceb98b37a81fd19a62fe54c9cf264a6ba8599e371ad7ae0e92e0fd9e7f000",
+  "rule_count": 19,
+  "examples_removed": true,
+  "supporting_report_identifiers_removed": true,
+  "principles": [
+    {
+      "rule_id": "E01",
+      "instruction": "Annotate entities in the report's interpretive narrative: primarily FINDINGS and IMPRESSION, including addenda or result-notification prose that restates a finding. Exclude administrative and clinical-context sections such as IMAGE/EXAM, INDICATION, HISTORY, and COMPARISON.",
+      "applies_when": "A candidate mention occurs in a radiology report.",
+      "exceptions": [
+        "Anatomical body regions named in an in-scope recommendation may be annotated even though they describe the coverage of a proposed examination.",
+        "A finding repeated in result-notification prose remains in scope."
+      ],
+      "priority": 1,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E02",
+      "instruction": "Use zero-based half-open character offsets [start, end) against the complete, unmodified source text. The extracted substring must equal text[start:end] exactly.",
+      "applies_when": "Creating every entity annotation.",
+      "exceptions": [],
+      "priority": 2,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E03",
+      "instruction": "Annotate semantically atomic units rather than maximal noun phrases. Separate anatomical qualifiers, anatomical heads, observation modifiers, and observation heads when each independently contributes meaning.",
+      "applies_when": "A phrase contains multiple meaningful components.",
+      "exceptions": [
+        "Keep a numeric measurement with its units and internal separators as one span, such as a multidimensional size expression.",
+        "Keep punctuation internal to a measurement or lexical token.",
+        "Do not include surrounding whitespace or ordinary terminal punctuation."
+      ],
+      "priority": 3,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E04",
+      "instruction": "Label as ANAT every mention that denotes anatomy, an anatomical region, a spatial subdivision of anatomy, or an anatomical reference structure.",
+      "applies_when": "The text names or localizes a body structure or body space.",
+      "exceptions": [
+        "A device, disease, procedure, or abnormal finding is not ANAT merely because it is located in the body.",
+        "Words such as size, contour, silhouette, structure, tissue, or space are ANAT only when they function as part of the anatomical reference rather than as the asserted finding."
+      ],
+      "priority": 4,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E05",
+      "instruction": "Resolve anatomy-versus-observation ambiguity by grammatical role. Treat a word as ANAT when it names the body reference being evaluated; treat it as an observation when it is the actual asserted morphology, condition, device, or change.",
+      "applies_when": "A generic or relational term could describe either anatomy or a finding.",
+      "exceptions": [],
+      "priority": 5,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E06",
+      "instruction": "Create observation entities for asserted radiographic findings, diseases, abnormalities, normal states, devices, postsurgical states, and meaningful finding attributes.",
+      "applies_when": "An in-scope token or expression conveys what is seen, absent, suspected, measured, or characterized.",
+      "exceptions": [
+        "Do not annotate a generic reporting word that is merely anaphoric, such as 'these findings', unless it itself carries a new assertion.",
+        "Do not annotate pure grammatical or discourse material."
+      ],
+      "priority": 6,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E07",
+      "instruction": "Label an observation as OBS-DA when the report explicitly asserts that it is absent.",
+      "applies_when": "The observation is governed by an explicit absence construction such as no, not, without, negative for, absent, or an equivalent unambiguous negation.",
+      "exceptions": [
+        "Do not apply absence polarity to anatomical entities.",
+        "A diagnosis introduced through a separate uncertainty relation may remain OBS-U even when the supporting imaging sign is absent.",
+        "Do not infer absence solely from silence or from a normal examination elsewhere."
+      ],
+      "priority": 7,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E08",
+      "instruction": "Propagate explicit negation through coordinated observation targets and their directly scoped observation modifiers.",
+      "applies_when": "One absence cue governs a list or a modified finding phrase.",
+      "exceptions": [
+        "Stop propagation at a clear clause boundary, contrast, or new assertion.",
+        "Never change an anatomical component to OBS-DA."
+      ],
+      "priority": 8,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E09",
+      "instruction": "Label an observation as OBS-U when the report explicitly presents that observation or diagnosis as possible, suspected, inferential, or of unknown status.",
+      "applies_when": "The proposition is governed by cues such as may, might, could represent, possible, possibility, suspicious for, potential, suggestive of, likely, unknown, or inferential 'consistent with'.",
+      "exceptions": [
+        "Do not label anatomical words OBS-U; they remain ANAT.",
+        "Do not automatically make a directly observed finding uncertain merely because its cause or diagnostic interpretation is uncertain.",
+        "A bare 'versus' without an additional hedge does not by itself force OBS-U in this annotation style; retain the assertion status supported by the surrounding text.",
+        "An inferential phrase describing an unmistakably observed physical state may remain OBS-DP."
+      ],
+      "priority": 9,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E10",
+      "instruction": "Label an observation as OBS-DP when it is asserted as present or directly characterized and is not under explicit absence or uncertainty scope.",
+      "applies_when": "An in-scope observation has no controlling OBS-DA or OBS-U context.",
+      "exceptions": [],
+      "priority": 10,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "instruction": "Preserve OBS-DP for a directly described visible morphology or configuration embedded within a hedged causal or artifact explanation; assign OBS-U to the hedged interpretation rather than to that observed morphology.",
+      "applies_when": "An uncertainty cue governs an inferred cause, diagnosis, or artifact interpretation that contains a separately identifiable description of what is visibly present.",
+      "exceptions": [
+        "If the morphology or configuration is itself explicitly hedged rather than directly described, label it OBS-U."
+      ],
+      "priority": 11,
+      "domain": "entity",
+      "status": "active",
+      "rule_id": "E11"
+    },
+    {
+      "rule_id": "E12",
+      "instruction": "Treat normal or reassuring imaging descriptions as definitely present observations, not as absent abnormalities.",
+      "applies_when": "The report positively describes a structure as clear, normal, unremarkable, stable, or within normal limits.",
+      "exceptions": [
+        "If the text explicitly negates a descriptor, assign that descriptor OBS-DA instead."
+      ],
+      "priority": 12,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E13",
+      "instruction": "Annotate meaningful observation modifiers with the certainty of the proposition they modify. This includes degree, extent, temporal status, morphology, distribution, acuity, measurement, and change.",
+      "applies_when": "A modifier contributes clinically relevant finding information.",
+      "exceptions": [
+        "An anatomical locator remains ANAT regardless of the finding's certainty.",
+        "Pure uncertainty cue words and reporting verbs are normally not entities unless they themselves denote the assessed observation, such as an explicitly unknown significance."
+      ],
+      "priority": 13,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E14",
+      "instruction": "Annotate devices, device components, device-state descriptors, surgical changes, and visible postsurgical materials as observations; annotate their anatomical routes and destinations as ANAT.",
+      "applies_when": "The report describes a catheter, line, clip, amputation, sternotomy, or comparable intervention-related finding.",
+      "exceptions": [
+        "A procedure named only in clinical history or indication remains out of scope.",
+        "A proposed procedure or examination is not an observation."
+      ],
+      "priority": 14,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E15",
+      "instruction": "Within recommendations, annotate anatomical coverage terms but not the imaging modality, contrast instruction, scheduling language, or generic evaluation language.",
+      "applies_when": "The report recommends additional imaging or follow-up.",
+      "exceptions": [
+        "If the recommendation restates a specific finding, annotate that finding normally.",
+        "If result-notification prose restates a finding, it is also annotated normally."
+      ],
+      "priority": 15,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "instruction": "Do not annotate tokens whose sole function is to frame how, where, or when a finding is depicted—such as view restriction, relative-reference localization, comparison framing, or generic depiction—unless the token independently states a clinically meaningful finding attribute.",
+      "applies_when": "A candidate OBS-DP token modifies the observation context rather than the observation's morphology, severity, status, or change itself.",
+      "exceptions": [
+        "Retain a term when it independently conveys a clinically meaningful observation or device state rather than merely supplying contextual framing."
+      ],
+      "priority": 16,
+      "domain": "entity",
+      "status": "active",
+      "rule_id": "E16"
+    },
+    {
+      "rule_id": "E17",
+      "instruction": "Annotate every in-scope occurrence independently, including repetitions between FINDINGS, IMPRESSION, and notification prose. Do not create relations, merge noncontiguous text, or deduplicate repeated concepts.",
+      "applies_when": "The same anatomy or observation appears more than once.",
+      "exceptions": [],
+      "priority": 17,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "rule_id": "E18",
+      "instruction": "Apply conflict resolution in this order: scope, exact span formation, anatomical status, explicit absence, explicit uncertainty, then default definite presence. Favor the local proposition over document-level assumptions.",
+      "applies_when": "Multiple rules could assign different labels to a candidate.",
+      "exceptions": [],
+      "priority": 18,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "instruction": "Do not annotate de-identification or redaction placeholders as entities, even when they occupy a syntactic position that would otherwise contain anatomy or an observation.",
+      "applies_when": "A candidate span consists solely of masking characters or a conventional placeholder token, such as [example omitted] or a sequence of asterisks.",
+      "exceptions": [],
+      "priority": 2,
+      "domain": "entity",
+      "status": "active",
+      "rule_id": "EA004"
+    }
+  ]
+}

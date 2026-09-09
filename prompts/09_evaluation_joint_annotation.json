@@ -1,0 +1,21 @@
+{
+  "system": "Annotate entities and directed relations jointly. Return one valid JSON object and no explanation. Relation endpoints must reference entity IDs in the same response.",
+  "user": {
+    "offset_reference": "{{INDEXED_REPORT_TEXT}}",
+    "operational_guidance": "{{CONDITION_SPECIFIC_JOINT_GUIDANCE}}",
+    "output_contract": {
+      "entities": "{{ENTITY_ARRAY_CONTRACT}}",
+      "relations": "{{RELATION_ARRAY_CONTRACT}}",
+      "required": [
+        "entities",
+        "relations"
+      ],
+      "type": "object"
+    },
+    "report": {
+      "doc_id": "{{DOC_ID}}",
+      "text": "{{REPORT_TEXT}}"
+    },
+    "task_schema": "RadGraph entity schema:\n- ANAT: an anatomical body part or anatomical structure.\n- OBS-DP: an observation that is definitely present.\n- OBS-DA: an observation that is definitely absent.\n- OBS-U: an observation whose presence is uncertain.\nAnnotate only content within the FINDINGS and IMPRESSION sections; ignore IMAGE, INDICATION, COMPARISON, and other sections.\nAn entity is a continuous text span. Use exact half-open character offsets into the supplied report text.\n\nRadGraph directed-relation schema:\n- Modify: one observation modifies another observation, or one anatomy entity modifies another anatomy entity.\n- LocatedAt: an observation is located at or associated with an anatomy entity.\n- SuggestiveOf: one observation is suggestive of another observation.\nAnnotate only relations expressed within the FINDINGS and IMPRESSION sections.\nRelations are directed from subject to object. Select endpoints only from immutable_entities; never create or alter an entity."
+  }
+}

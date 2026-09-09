@@ -1,0 +1,22 @@
+{
+  "system": "Return one valid JSON object. Change one rule only; do not patch a document-specific answer.",
+  "user": {
+    "complete_discrepancy_evidence": "{{ALL_INSTANCES_IN_SELECTED_STRATUM}}",
+    "current_principles": "{{CURRENT_ACCEPTED_ENTITY_PRINCIPLES}}",
+    "output_contract": {
+      "action": "ADD or REVISE",
+      "principle": {
+        "applies_when": "condition",
+        "examples": [],
+        "exceptions": [],
+        "instruction": "one operational rule",
+        "priority": 1
+      },
+      "rationale": "text",
+      "target_rule_id": "existing ID for REVISE; null for ADD"
+    },
+    "prior_decisions": "{{PRIOR_DECISION_HISTORY}}",
+    "selected_stratum": "{{HIGHEST_RANKED_ELIGIBLE_STRATUM}}",
+    "task": "Propose exactly one generalizable atomic ADD or REVISE for the selected entity discrepancy stratum."
+  }
+}

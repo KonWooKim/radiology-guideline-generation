@@ -1,0 +1,23 @@
+{
+  "system": "Annotate entities only. Return one JSON object. Do not output relations or explanations.",
+  "user": {
+    "guideline": "{{RENDERED_ENTITY_GUIDELINE}}",
+    "offset_reference": "{{INDEXED_REPORT_TEXT}}",
+    "output_contract": {
+      "entities": [
+        {
+          "end": 4,
+          "id": "T1",
+          "label": "ANAT",
+          "start": 0,
+          "text": "exact substring"
+        }
+      ]
+    },
+    "report": {
+      "doc_id": "{{DOC_ID}}",
+      "text": "{{REPORT_TEXT}}"
+    },
+    "rules": "{{CURRENT_ENTITY_PRINCIPLES}}"
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "representation": "Report-text-redacted structured guidelines, not the verbatim inference prompt",
+  "source_sha256": "71fb77a91a13c5832ad6b828037e715a357700090a7fbcea2fabdd477e1a2d46",
+  "rule_count": 19,
+  "examples_removed": true,
+  "supporting_report_identifiers_removed": true,
+  "principles": [
+    {
+      "rule_id": "R01",
+      "instruction": "Project every relation onto the supplied predicted-entity inventory. A relation endpoint must be the ID of one supplied predicted entity; never invent an ID, create a composite span, or return a human-annotation ID.",
+      "applies_when": "Selecting or aligning either endpoint of any relation.",
+      "exceptions": [
+        "Minor punctuation or boundary differences may be normalized when a predicted entity clearly denotes the same concept.",
+        "A predicted entity may be used despite an observation-label disagreement if its span and concept clearly match.",
+        "If an annotated multiword endpoint is split into several predicted entities, select the single semantic head appropriate to the relation. Additional modifier-to-head relations may be emitted only when independently licensed by the text.",
+        "If no predicted entity represents a required endpoint, omit that relation rather than substituting a neighboring entity or collapsing a relation path."
+      ],
+      "priority": 1,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R02",
+      "instruction": "Emit directed triples with exactly one allowed predicate: LocatedAt, Modify, or SuggestiveOf. Preserve subject and object roles; do not add inverse, symmetric, or transitive relations. Emit an exact triple only once.",
+      "applies_when": "Formatting and validating all relation outputs.",
+      "exceptions": [
+        "The same endpoint pair may receive different predicates only when distinct textual semantics independently support both labels.",
+        "Repeated mentions in different sentences or report sections are separate entities and may receive analogous relations without being duplicates."
+      ],
+      "priority": 2,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "instruction": "For a standalone, unmodified, adjective-first verbless sentence in the FINDINGS section consisting only of a state observation immediately followed by an anatomical noun, emit LocatedAt from the anatomical entity to the state entity; otherwise retain the canonical hosted finding/state/device -> anatomical host direction.",
+      "applies_when": "The local FINDINGS sentence has the complete form [example omitted] with no copula, coordination, anatomical modifier, or other supplied content entity.",
+      "exceptions": [
+        "Copular or anatomy-first predications retain state -> anatomy direction.",
+        "Adjective-first fragments containing laterality, regional qualifiers, coordination, or additional content retain state -> anatomy direction.",
+        "Summary or IMPRESSION restatements retain state -> anatomy direction."
+      ],
+      "priority": 3,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "R03"
+    },
+    {
+      "instruction": "Represent anatomical phrases compositionally. When selecting the LocatedAt object from a phrase containing an anatomy-bearing owner or descriptor plus a generic depiction/container noun such as contour, silhouette, region, or zone, attach the observation to the anatomy-bearing entity rather than the generic noun. Continue to attach anatomical qualifiers to their head with Modify when independently licensed.",
+      "applies_when": "A LocatedAt candidate has competing supplied objects within the same anatomical noun phrase, and one candidate identifies the anatomy while another merely names its generic depiction or regional container.",
+      "exceptions": [
+        "Use a specific anatomical head such as lobe, spine, atrium, or hemidiaphragm when it is the actual asserted site; laterality or directional modifiers do not displace such a head solely because they are closer.",
+        "Retain the generic property/component as object when the subject explicitly denotes a property-specific measurement or alteration of that component, such as an enlarged silhouette; scalar property predications involving size or volume remain governed by R06.",
+        "Do not attach the observation to a distant anatomy mentioned in a proximity phrase such as [example omitted] when the observation is locally anchored to an anatomy-bearing descriptor in its own noun phrase."
+      ],
+      "priority": 4,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "R04"
+    },
+    {
+      "instruction": "In the fixed normal-range construction [example omitted] treat [example omitted] as the relation head and emit Modify from each separately supplied phrase component [example omitted] and [example omitted] to [example omitted]",
+      "applies_when": "The entities occur as components of the same explicit [example omitted] construction.",
+      "exceptions": [
+        "Emit only edges whose endpoints are supplied entities, and do not infer analogous edges across clauses or sentences.",
+        "Do not reverse these edges to normal -> limits or normal -> within."
+      ],
+      "priority": 5,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "R05"
+    },
+    {
+      "instruction": "For an anatomical property or component noun, emit state/value -> property with LocatedAt only when that property is explicitly the grammatical bearer of the state in a predicative construction. When the state or value is merely attributive in a noun phrase such as [example omitted] [example omitted] or [example omitted] the attribution alone licenses neither LocatedAt nor Modify from the state/value to the property. An [example omitted] dimension complement or mere adjacency likewise does not make the property a relational host. Continue to use Modify from an explicit property/component to its anatomical owner; any state-to-owner or component-to-destination LocatedAt edge must be independently asserted.",
+      "applies_when": "A candidate relation links a state or value to size, contour, silhouette, volume, or a similar anatomical property/component.",
+      "exceptions": [
+        "Telegraphic predications such as [example omitted] count as explicit predicative constructions even when the copula is omitted.",
+        "A shared predicate may license LocatedAt to each coordinated property clearly within its grammatical scope.",
+        "Explicit spatial placement of a device component remains eligible for LocatedAt under the ordinary destination rule.",
+        "Modifiers of findings that are not anatomical property/component nouns remain governed by the ordinary Modify rules."
+      ],
+      "priority": 6,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "R06"
+    },
+    {
+      "instruction": "Attach each explicit modifier to the semantic or grammatical head of its phrase rather than to the nearest compatible entity. Parallel prenominal qualifiers skip intervening qualifiers and share the phrase head, while genuinely nested qualifiers form a scope chain. When a phrase-level or property modifier occurs in an anatomical phrase containing a semantically transparent depiction/container noun such as silhouette or region plus an explicit anatomy-bearing owner or more specific appositive head, use that anatomy-bearing entity as the Modify object.",
+      "applies_when": "A Modify subject has multiple candidate objects in the same noun phrase, especially because another modifier or a generic depiction/container noun intervenes before the phrase's semantic head.",
+      "exceptions": [
+        "Retain a generic noun as the object when it is itself the lexical concept directly characterized, as with [example omitted] where round modifies area.",
+        "Retain a property or component as the object when it is explicitly the grammatical bearer of a state under R06, as with enlarged -> silhouette.",
+        "Do not bypass an intervening entity when the wording establishes genuine nested scope, as with mildly -> coarsened -> markings.",
+        "Do not use an anatomy-bearing entity outside the same phrase or explicit appositive construction."
+      ],
+      "priority": 7,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "R07"
+    },
+    {
+      "instruction": "Use SuggestiveOf for an explicit evidential or interpretive link from an observed sign, finding, structure, or state to a possible diagnosis, explanation, consequence, or clinical interpretation. Resolve an omitted evidence source to the immediately preceding finding when an adjacent inferential sentence uses a demonstrative, ellipsis, or contrastive alternative without introducing a new source; when a postposed inferential phrase scopes over a coordinated evidence phrase, emit the relation from each eligible conjunct.",
+      "applies_when": "The text uses an inferential construction equivalent to suggesting, representing, being consistent with, demonstrating, possibly being, or having uncertain significance, including a locally continued interpretation whose source is anaphoric or shared across coordinated evidence entities.",
+      "exceptions": [
+        "The target should normally be an observation or interpretive entity, not a purely anatomical entity.",
+        "Do not resolve an omitted source across a section boundary, beyond the immediately adjacent inferential sequence, or when a new source or competing antecedent intervenes.",
+        "Do not extend a postposed interpretation to nearby entities outside the coordinated source phrase or when punctuation or an independent clause explicitly restricts it to one conjunct.",
+        "An anatomical source is permitted when the anatomy or its appearance is explicitly placed within the inferential scope.",
+        "Do not use SuggestiveOf for recommendations, follow-up examinations, or mere co-occurrence."
+      ],
+      "priority": 8,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "R08"
+    },
+    {
+      "rule_id": "R09",
+      "instruction": "For an explicit inferential statement with alternatives, emit one SuggestiveOf relation from the stated source to each eligible supplied interpretive target.",
+      "applies_when": "One finding is explicitly said to represent, suggest, or be consistent with multiple alternatives.",
+      "exceptions": [
+        "Do not create a SuggestiveOf edge to an alternative represented only by an anatomical entity.",
+        "A bare list joined by an ambiguity marker is insufficient when no explicit source finding and inferential predicate are present.",
+        "If only one alternative has a usable supplied entity, emit only that projectable relation."
+      ],
+      "priority": 9,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R10",
+      "instruction": "Relation annotation is independent of assertion status. Preserve valid LocatedAt, Modify, and SuggestiveOf links for present, absent, uncertain, stable, or negated findings.",
+      "applies_when": "A relation-bearing phrase occurs under negation, uncertainty, or an absence label.",
+      "exceptions": [
+        "Negation does not by itself license a relation; the underlying semantic link must still be explicit.",
+        "Do not convert negation words into relation endpoints unless they are supplied entities and function as genuine modifiers."
+      ],
+      "priority": 10,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R11",
+      "instruction": "Resolve shared scope conservatively. A common state or modifier may relate to multiple coordinated entities when grammar clearly places all conjuncts within its scope.",
+      "applies_when": "A predicate follows or precedes a coordinated list of findings, structures, or properties.",
+      "exceptions": [
+        "Do not extend the predicate to a nearby entity outside the coordination.",
+        "Do not assume that a relation applying to one repeated finding automatically applies to all other mentions."
+      ],
+      "priority": 11,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R12",
+      "instruction": "Keep relation resolution local. Prefer entities in the same noun phrase, clause, or explicit predicate-argument construction, and do not perform unsupported cross-sentence or cross-section coreference.",
+      "applies_when": "A possible relation would require resolving a pronoun, an omitted noun, a distant repeated concept, or an antecedent in another section.",
+      "exceptions": [
+        "Repeated findings in a summary section may be annotated independently using the entities and wording present in that section.",
+        "A relation may cross a short clause boundary only when the source and target are explicitly connected by the sentence's grammar."
+      ],
+      "priority": 12,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R13",
+      "instruction": "When a supplied positional or projection predicate is an entity, preserve it as an intermediate relation node. Link the positional predicate to its anatomical destination with LocatedAt, and use Modify for its direct compositional attachment to the finding or device component.",
+      "applies_when": "The text contains a supplied entity corresponding to projecting, overlying, or another positional relation.",
+      "exceptions": [
+        "Do not collapse the path into a direct finding-to-site relation unless the text independently states that direct location.",
+        "If the positional entity is unavailable, omit relations requiring it rather than replacing it with an adjacent entity.",
+        "Use the grammatical descriptive dependency for the Modify edge; do not infer both directions."
+      ],
+      "priority": 13,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R14",
+      "instruction": "Choose the predicate by semantic precedence: explicit diagnostic interpretation selects SuggestiveOf; explicit spatial or host anchoring selects LocatedAt; descriptive or compositional dependence selects Modify.",
+      "applies_when": "A candidate pair appears compatible with more than one relation label.",
+      "exceptions": [
+        "Multiple labels may be retained only if separate explicit constructions support separate meanings.",
+        "Entity labels alone never determine the predicate.",
+        "Corpus-specific direction anomalies should not override the dominant semantic direction unless the local text unambiguously requires it."
+      ],
+      "priority": 14,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R15",
+      "instruction": "Avoid relation overgeneration. Do not annotate mere adjacency, shared topic, comparison with a prior study, examination recommendations, notification statements, or transitive consequences of already emitted relations.",
+      "applies_when": "No explicit grammatical, spatial, descriptive, or inferential link connects two supplied entities.",
+      "exceptions": [
+        "Measurements and explicit temporal-status descriptors are valid Modify relations.",
+        "Explicit report-summary restatements are valid independent relation contexts."
+      ],
+      "priority": 15,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "instruction": "Do not emit Modify when the subject functions only as an epistemic or metalinguistic assessment of a concept's reality, determinacy, or clinical significance rather than as a descriptive attribute of that concept.",
+      "applies_when": "A supplied term such as [example omitted] [example omitted] or [example omitted] qualifies whether a finding is real or interpretable, or comments on its clinical significance.",
+      "exceptions": [
+        "Retain Modify for explicit morphology, measurement, severity, temporal status, and scalar degree descriptors, including terms such as rounded, nodular, stable, significant, and borderline.",
+        "This rule does not suppress a relation independently licensed by an explicit descriptive use of the same word."
+      ],
+      "priority": 7,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "RA009"
+    },
+    {
+      "instruction": "For SuggestiveOf only, when the same lexical source head and same lexical target head restate one interpretation in multiple report sections, emit exactly one relation. Prefer the occurrence in which both endpoints are explicitly linked within the same inferential clause; if multiple occurrences are equally local and explicit, retain the earliest occurrence.",
+      "applies_when": "Findings, Impression, or another summary section repeats the same source-to-interpretation assertion using separate supplied entity mentions.",
+      "exceptions": [
+        "Retain separate relations when either the source head or target head differs, or when the later occurrence expresses a distinct interpretation rather than a restatement.",
+        "Do not merge relations merely because their targets are clinically related; the repeated target head must be the same."
+      ],
+      "priority": 8,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "RA025"
+    },
+    {
+      "instruction": "Resolve quantitative Modify attachments by the measurement construction’s semantic scope rather than proximity: a measurement associated with a generic carrier phrase such as [example omitted] modifies the embedded finding head, while a dimension noun in a scalar-change complement such as [example omitted] modifies the change-state entity; attach the change state to the finding separately when explicitly licensed.",
+      "applies_when": "A supplied measurement or dimension entity participates in an explicit measurement, measuring, or scalar-change construction and multiple same-clause Modify objects are available.",
+      "exceptions": [
+        "Do not redirect nonquantitative morphology or shape modifiers; in [example omitted] round continues to modify area.",
+        "A property noun in an owner compound, such as [example omitted] is not a scalar-change complement and remains governed by the ordinary phrase-head rule.",
+        "Emit only relations whose required endpoints are supplied entities."
+      ],
+      "priority": 7,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "RA041"
+    },
+    {
+      "instruction": "Emit Modify from a supplied relational carrier or spacing noun to the supplied head of an explicit same-phrase complement when that complement defines the carrier's content or boundaries, as in [example omitted] or [example omitted]",
+      "applies_when": "Both endpoints are supplied entities from the same semantic family (observation-to-observation or anatomy-to-anatomy), X is a generic relational noun such as [example omitted] or [example omitted] and an explicit [example omitted] or [example omitted] phrase makes Y the content or boundary-defining head of X.",
+      "exceptions": [
+        "Do not apply when the complement instead expresses the anatomical location or owner of a finding, such as [example omitted] or [example omitted]; use the independently licensed location rule.",
+        "Do not apply when the prepositional phrase merely spatially locates an unrelated finding or when the complement head is not a supplied entity.",
+        "For a coordinated boundary phrase, target the supplied common head and do not invent a composite endpoint or additional endpoints."
+      ],
+      "priority": 7,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "RA047"
+    }
+  ]
+}

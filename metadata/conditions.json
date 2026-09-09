@@ -1,0 +1,1174 @@
+[
+  {
+    "model": "DeepSeek",
+    "condition": "S0",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/S0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "c58a3f9e71d0196e4a0f780f738870d2599c421ac3115459c3f08ad0405419ea",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 199,
+        "fp": 441,
+        "fn": 1387,
+        "f1": 0.17879604672057503
+      },
+      "relation": {
+        "tp": 22,
+        "fp": 250,
+        "fn": 1145,
+        "f1": 0.030576789437109106
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "G0",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/G0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "abd78da038e7c13e3c2cf9c5c61aba0857772c1455e3218bcc7077ee572e5022",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1277,
+        "fp": 212,
+        "fn": 309,
+        "f1": 0.8305691056910569
+      },
+      "relation": {
+        "tp": 639,
+        "fp": 303,
+        "fn": 528,
+        "f1": 0.6059743954480796
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "Gstar",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/Gstar.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "8afaddfd2c6ae6e1e8b9a4e77bcd17225b2546f2e3b38ceb9bf73d0d7790e4bd",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1361,
+        "fp": 293,
+        "fn": 225,
+        "f1": 0.8401234567901235
+      },
+      "relation": {
+        "tp": 675,
+        "fp": 359,
+        "fn": 492,
+        "f1": 0.6133575647432985
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "joint",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "29f9313228cee83b3086e10481efef18e31cad024e905ec7327723eb671f4cde",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1384,
+        "fp": 249,
+        "fn": 202,
+        "f1": 0.8598943771357564
+      },
+      "relation": {
+        "tp": 745,
+        "fp": 390,
+        "fn": 422,
+        "f1": 0.6472632493483927
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "human",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/human.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "bab4e17f637dd31bdfa45057962ed21df0584ff26a6a09ba406189091104e466",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1212,
+        "fp": 266,
+        "fn": 374,
+        "f1": 0.7911227154046998
+      },
+      "relation": {
+        "tp": 621,
+        "fp": 423,
+        "fn": 546,
+        "f1": 0.5617367706919946
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "minimal_R",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/minimal_R.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "d64045625e36f96e2a9999f3a6193f8c45d71aef3597d7092b4a87e516032a1d",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1361,
+        "fp": 293,
+        "fn": 225,
+        "f1": 0.8401234567901235
+      },
+      "relation": {
+        "tp": 630,
+        "fp": 406,
+        "fn": 537,
+        "f1": 0.571947344530186
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "author",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/author.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "d58eeb98059de11acb62de48efd61a00171d4907b05be3530327379e19d38a93",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1316,
+        "fp": 193,
+        "fn": 270,
+        "f1": 0.8504038772213247
+      },
+      "relation": {
+        "tp": 731,
+        "fp": 360,
+        "fn": 436,
+        "f1": 0.6474756421612046
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "author_routed_joint",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/author_routed_joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "525755543501c2efa6dbcf8f794865f85d7fd8060a9a240fefd53fa7622c7ac7",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1317,
+        "fp": 236,
+        "fn": 269,
+        "f1": 0.8391207390888819
+      },
+      "relation": {
+        "tp": 725,
+        "fp": 414,
+        "fn": 442,
+        "f1": 0.6287944492627926
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "author_full",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/author_full.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "eddd6edaa3c6bf8616996f959964281d669c877ca2c8cacd33ec7be82da762b5",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1290,
+        "fp": 200,
+        "fn": 296,
+        "f1": 0.8387516254876463
+      },
+      "relation": {
+        "tp": 685,
+        "fp": 398,
+        "fn": 482,
+        "f1": 0.6088888888888889
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "author_full_joint",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/author_full_joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "16eb8398811e9700d7d4dd8d4c7670f320688651b6aa64bc06980ae06d6defef",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1314,
+        "fp": 217,
+        "fn": 272,
+        "f1": 0.8431183830606351
+      },
+      "relation": {
+        "tp": 727,
+        "fp": 388,
+        "fn": 440,
+        "f1": 0.6371603856266432
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "human_joint",
+    "block": "core",
+    "path": "predictions/evaluation/DeepSeek/human_joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "510780a20fa60f6bfbb38afcf38e71d7bc5e2816ce5eb257877e86cabcd8d3f0",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1244,
+        "fp": 221,
+        "fn": 342,
+        "f1": 0.8154703375942315
+      },
+      "relation": {
+        "tp": 626,
+        "fp": 384,
+        "fn": 541,
+        "f1": 0.5751033532384014
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "S0",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/S0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "b11ebefaa957b2f041946cb5036063d20a2a64cc9d843a2f6dd2d2da3b90817a",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 230,
+        "fp": 507,
+        "fn": 1356,
+        "f1": 0.19801980198019803
+      },
+      "relation": {
+        "tp": 26,
+        "fp": 307,
+        "fn": 1141,
+        "f1": 0.034666666666666665
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "G0",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/G0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "a7ce7d85a70c8d0ab8d9838830b4327117f0c5d932d2b0d9c528cb5c977bd130",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1312,
+        "fp": 242,
+        "fn": 274,
+        "f1": 0.8356687898089171
+      },
+      "relation": {
+        "tp": 654,
+        "fp": 482,
+        "fn": 513,
+        "f1": 0.5679548415110726
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "Gstar",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/Gstar.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "3e05bd45101249b49a899f2ed3e1cacb0877c22d3a62334b0a6154ac0c950388",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1370,
+        "fp": 167,
+        "fn": 216,
+        "f1": 0.8773615113672751
+      },
+      "relation": {
+        "tp": 681,
+        "fp": 388,
+        "fn": 486,
+        "f1": 0.60912343470483
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "joint",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "413535665596ad3880ee5a641f2203183461a1cfbbd0ca0640999e6e04a84498",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1381,
+        "fp": 173,
+        "fn": 205,
+        "f1": 0.8796178343949045
+      },
+      "relation": {
+        "tp": 703,
+        "fp": 365,
+        "fn": 464,
+        "f1": 0.629082774049217
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "human",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/human.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "06ea9db6444620ab9bacee52bf6aa68135688b649558376d4f303f1f49e46822",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1295,
+        "fp": 244,
+        "fn": 291,
+        "f1": 0.8288000000000001
+      },
+      "relation": {
+        "tp": 693,
+        "fp": 430,
+        "fn": 474,
+        "f1": 0.605240174672489
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "minimal_R",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/minimal_R.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "a875ab5635ff478391967201e2c6972d24e9532414cac1eda2c9bf43bbef4f9f",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1370,
+        "fp": 167,
+        "fn": 216,
+        "f1": 0.8773615113672751
+      },
+      "relation": {
+        "tp": 690,
+        "fp": 388,
+        "fn": 477,
+        "f1": 0.6146993318485523
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "author",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/author.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "ff9b2a63bb91ee261d34476a396f3d60991a193491f6429a6e3ad830bc1f91e3",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1310,
+        "fp": 269,
+        "fn": 276,
+        "f1": 0.8278041074249605
+      },
+      "relation": {
+        "tp": 701,
+        "fp": 452,
+        "fn": 466,
+        "f1": 0.6043103448275862
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "author_routed_joint",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/author_routed_joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "2136c3aed526f0265c9aad99037d617215a1b9bcfc806679827315ac76cc5a61",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1321,
+        "fp": 243,
+        "fn": 265,
+        "f1": 0.8387301587301588
+      },
+      "relation": {
+        "tp": 722,
+        "fp": 443,
+        "fn": 445,
+        "f1": 0.6192109777015437
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "author_full",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/author_full.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "be508f6c8f333d88ed878068d7de7abbf7ecf3d9463eeb515ff570a53107a875",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1326,
+        "fp": 249,
+        "fn": 260,
+        "f1": 0.8389750079088896
+      },
+      "relation": {
+        "tp": 716,
+        "fp": 427,
+        "fn": 451,
+        "f1": 0.6199134199134199
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "author_full_joint",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/author_full_joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "cd33ac18c10bdedf0a9bf66c375de02cb15394454c9abd5665180d2156de5bfb",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1308,
+        "fp": 247,
+        "fn": 278,
+        "f1": 0.8328557784145177
+      },
+      "relation": {
+        "tp": 709,
+        "fp": 445,
+        "fn": 458,
+        "f1": 0.6109435588108575
+      }
+    }
+  },
+  {
+    "model": "Terra",
+    "condition": "human_joint",
+    "block": "core",
+    "path": "predictions/evaluation/Terra/human_joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "2d301bd0ea74040ff9ebdaa5b6162f8afd3f0ba83a096645bac431dac005e781",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1273,
+        "fp": 295,
+        "fn": 313,
+        "f1": 0.8072289156626505
+      },
+      "relation": {
+        "tp": 675,
+        "fp": 491,
+        "fn": 492,
+        "f1": 0.5786540934419203
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "S0",
+    "block": "core",
+    "path": "predictions/evaluation/Sol/S0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "51ab2ea22e05d2a2380551b7c5f4b5c5b5fc4e27f68549a7a08730836da90f91",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 232,
+        "fp": 530,
+        "fn": 1354,
+        "f1": 0.19761499148211242
+      },
+      "relation": {
+        "tp": 35,
+        "fp": 360,
+        "fn": 1132,
+        "f1": 0.04481434058898848
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "G0",
+    "block": "core",
+    "path": "predictions/evaluation/Sol/G0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "fc39a1be732e4ec880786241d0384ad99a4f3d04e704202238673b33ff4986d3",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1389,
+        "fp": 208,
+        "fn": 197,
+        "f1": 0.8727615457115928
+      },
+      "relation": {
+        "tp": 773,
+        "fp": 381,
+        "fn": 394,
+        "f1": 0.6660922016372254
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "Gstar",
+    "block": "core",
+    "path": "predictions/evaluation/Sol/Gstar.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "b5adf2cecf2c62902b1ed1ea0ab0d95247d6c9a46ce8511428e2dab6d0555ece",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1382,
+        "fp": 188,
+        "fn": 204,
+        "f1": 0.8757921419518379
+      },
+      "relation": {
+        "tp": 793,
+        "fp": 334,
+        "fn": 374,
+        "f1": 0.6913687881429817
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "joint",
+    "block": "core",
+    "path": "predictions/evaluation/Sol/joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "1db2c874a3e0266f33521fcc3a18f12ae321a17fb9162453a11fa5bb730abd6e",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1422,
+        "fp": 175,
+        "fn": 164,
+        "f1": 0.8934967012252593
+      },
+      "relation": {
+        "tp": 831,
+        "fp": 327,
+        "fn": 336,
+        "f1": 0.7148387096774194
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "human",
+    "block": "core",
+    "path": "predictions/evaluation/Sol/human.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "483b2f54e375f29be1e0d71e376c057216dd110480041c4bda8cbac61a91eb82",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1324,
+        "fp": 204,
+        "fn": 262,
+        "f1": 0.8503532434168273
+      },
+      "relation": {
+        "tp": 726,
+        "fp": 401,
+        "fn": 441,
+        "f1": 0.6329555361813427
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "minimal_R",
+    "block": "core",
+    "path": "predictions/evaluation/Sol/minimal_R.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "4cf15cb1862da1b6bc64f05cac968f657ec966327cfe0842c61c57b7b010b14f",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1382,
+        "fp": 188,
+        "fn": 204,
+        "f1": 0.8757921419518379
+      },
+      "relation": {
+        "tp": 748,
+        "fp": 433,
+        "fn": 419,
+        "f1": 0.637137989778535
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "author",
+    "block": "core",
+    "path": "predictions/evaluation/Sol/author.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "23cea449afcf5c05e77d8c159fc33554ee754d99984a0027de570e0462e2222f",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1340,
+        "fp": 227,
+        "fn": 246,
+        "f1": 0.8499841420869012
+      },
+      "relation": {
+        "tp": 761,
+        "fp": 405,
+        "fn": 406,
+        "f1": 0.652378911273039
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "author_full",
+    "block": "core",
+    "path": "predictions/evaluation/Sol/author_full.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "6badba66015de58d6e31c0ca74b358579fcfb6a79e40b573e87fcf7168621696",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1349,
+        "fp": 221,
+        "fn": 237,
+        "f1": 0.8548795944233207
+      },
+      "relation": {
+        "tp": 768,
+        "fp": 399,
+        "fn": 399,
+        "f1": 0.6580976863753213
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "author_full_joint",
+    "block": "core",
+    "path": "predictions/evaluation/Sol/author_full_joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "95d39cafd8b0c4dcc3fb25c465c5782e79c899e62d5aa19d450c43f1f4458e28",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1345,
+        "fp": 213,
+        "fn": 241,
+        "f1": 0.8555979643765903
+      },
+      "relation": {
+        "tp": 763,
+        "fp": 408,
+        "fn": 404,
+        "f1": 0.6526946107784432
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "human_joint",
+    "block": "core",
+    "path": "predictions/evaluation/Sol/human_joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "35411c94485f8aa898cedee9751ab224bbd15346b235bee31b54e7678b393b0f",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1264,
+        "fp": 284,
+        "fn": 322,
+        "f1": 0.8066368857689853
+      },
+      "relation": {
+        "tp": 657,
+        "fp": 509,
+        "fn": 510,
+        "f1": 0.5632233176168024
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "author_routed_joint",
+    "block": "routed-joint completion",
+    "path": "predictions/evaluation/Sol/author_routed_joint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "c7b4e57aa6415d17091c57cfd00e2133214985ee13ef3f41ad9753249e0df78e",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1340,
+        "fp": 221,
+        "fn": 246,
+        "f1": 0.8516047028916428
+      },
+      "relation": {
+        "tp": 777,
+        "fp": 398,
+        "fn": 390,
+        "f1": 0.6635354397950469
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "initial_R_fixed_final_entities",
+    "block": "fixed-entity diagnostic",
+    "path": "predictions/evaluation/Sol/initial_R_fixed_final_entities.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "90c9ad91bdd46f378239865f82725637ef732d14ab0884031f3be07b3d768f27",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1382,
+        "fp": 188,
+        "fn": 204,
+        "f1": 0.8757921419518379
+      },
+      "relation": {
+        "tp": 750,
+        "fp": 367,
+        "fn": 417,
+        "f1": 0.6567425569176883
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "FS12",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/DeepSeek/FS12.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "4dccfbeb66d7f65d6c6ed453689dc9a063ff4b66271ab0c3fd2f9c4d85d2b04a",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1336,
+        "fp": 172,
+        "fn": 250,
+        "f1": 0.8636069812540401
+      },
+      "relation": {
+        "tp": 755,
+        "fp": 323,
+        "fn": 412,
+        "f1": 0.6726057906458798
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "FS4",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/DeepSeek/FS4.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "126166a2306caf96bedf899ea684d336d28b852128c69132c1b3c9555e49004a",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1314,
+        "fp": 157,
+        "fn": 272,
+        "f1": 0.8596663395485771
+      },
+      "relation": {
+        "tp": 734,
+        "fp": 329,
+        "fn": 433,
+        "f1": 0.6582959641255606
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "FS8",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/DeepSeek/FS8.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "ad973de92196477a9941db6b1a3c42898fc8fe4d947ed199bf397c9503bc11d1",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1341,
+        "fp": 154,
+        "fn": 245,
+        "f1": 0.8704965920155794
+      },
+      "relation": {
+        "tp": 779,
+        "fp": 284,
+        "fn": 388,
+        "f1": 0.6986547085201794
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "FSblock_G0",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/DeepSeek/FSblock_G0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "c8bd4dbe14a2fdae2ac4b8c2c7428702f46aa8e52ca28e510ce718eeec9c6091",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1290,
+        "fp": 229,
+        "fn": 296,
+        "f1": 0.8309178743961353
+      },
+      "relation": {
+        "tp": 616,
+        "fp": 370,
+        "fn": 551,
+        "f1": 0.5722248026010218
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "FSblock_Gstar",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/DeepSeek/FSblock_Gstar.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "5a57c350a47580b66be662d6ce6b69ff380bcf5da460018843fdd35b018066fc",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1363,
+        "fp": 250,
+        "fn": 223,
+        "f1": 0.8521412941544233
+      },
+      "relation": {
+        "tp": 728,
+        "fp": 335,
+        "fn": 439,
+        "f1": 0.6529147982062781
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "FSblock_S0",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/DeepSeek/FSblock_S0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "66ee4a22ca1605eeb076047283b442920abbe7e5cc2f2f27e6e7c4da0de7539b",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 197,
+        "fp": 450,
+        "fn": 1389,
+        "f1": 0.17644424540976264
+      },
+      "relation": {
+        "tp": 19,
+        "fp": 255,
+        "fn": 1148,
+        "f1": 0.0263705759888966
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "FS12",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/Sol/FS12.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "0a26d54cd8bc19e710864ccc03049ef228c93f562ae4a812585fdcb21e16e20e",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1381,
+        "fp": 204,
+        "fn": 205,
+        "f1": 0.8710186061179439
+      },
+      "relation": {
+        "tp": 820,
+        "fp": 355,
+        "fn": 347,
+        "f1": 0.7002561912894961
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "FS4",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/Sol/FS4.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "731aefcf76803973ae67255fd23b1e94360700895140cf63c6c1e2db0bb87351",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1381,
+        "fp": 187,
+        "fn": 205,
+        "f1": 0.87571337983513
+      },
+      "relation": {
+        "tp": 827,
+        "fp": 370,
+        "fn": 340,
+        "f1": 0.6996615905245347
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "FS8",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/Sol/FS8.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "860124e8606b330178332d02e44ca57a9697403dd07edd3d6dc7f9511e8e1424",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1389,
+        "fp": 197,
+        "fn": 197,
+        "f1": 0.8757881462799496
+      },
+      "relation": {
+        "tp": 841,
+        "fp": 347,
+        "fn": 326,
+        "f1": 0.7142250530785562
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "FSblock_G0",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/Sol/FSblock_G0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "b5dcbdcff8df4f782250dd658f0f1ff14eef57575fe8a2f07574de98e03e6b2b",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1409,
+        "fp": 192,
+        "fn": 177,
+        "f1": 0.8842171320991528
+      },
+      "relation": {
+        "tp": 780,
+        "fp": 388,
+        "fn": 387,
+        "f1": 0.6680942184154176
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "FSblock_Gstar",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/Sol/FSblock_Gstar.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "4c0ec843a3ba06f4d28e0e9b7a430b3d938c2ec6e36775c750561c46ce9231f6",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1386,
+        "fp": 185,
+        "fn": 200,
+        "f1": 0.8780487804878049
+      },
+      "relation": {
+        "tp": 809,
+        "fp": 328,
+        "fn": 358,
+        "f1": 0.7022569444444444
+      }
+    }
+  },
+  {
+    "model": "Sol",
+    "condition": "FSblock_S0",
+    "block": "few-shot and accompanying controls",
+    "path": "predictions/evaluation/Sol/FSblock_S0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "6ec6f11e5f51f3dd09388a2cc156a35d9ff3b25f7cbdbb8baac158294da43518",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 251,
+        "fp": 522,
+        "fn": 1335,
+        "f1": 0.21280203476049173
+      },
+      "relation": {
+        "tp": 44,
+        "fp": 375,
+        "fn": 1123,
+        "f1": 0.05548549810844893
+      }
+    }
+  },
+  {
+    "model": "Checkpoint",
+    "condition": "released_checkpoint",
+    "block": "checkpoint diagnostic",
+    "path": "predictions/evaluation/Checkpoint/released_checkpoint.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "d8f918685e76c25a629156641ef701dcd82459c5f0527765efd9b19f4e5eaf33",
+    "expected_exact_scores": {
+      "entity": {
+        "tp": 1328,
+        "fp": 173,
+        "fn": 258,
+        "f1": 0.8603822481373502
+      },
+      "relation": {
+        "tp": 658,
+        "fp": 395,
+        "fn": 509,
+        "f1": 0.5927927927927927
+      }
+    }
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "minimal_entities_final_R",
+    "block": "fixed-entity diagnostic",
+    "path": "predictions/evaluation/DeepSeek/minimal_entities_final_R.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "d0a019ab76f4b4ff6e54c8cdcb6ff939e8db9a51e26b5be78c035e8c160afd5c",
+    "expected_exact_scores": null
+  },
+  {
+    "model": "Terra",
+    "condition": "minimal_entities_final_R",
+    "block": "fixed-entity diagnostic",
+    "path": "predictions/evaluation/Terra/minimal_entities_final_R.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "e8164ee769f2647c563ed561af531d88e63a7d74eacf21bc933c84c4953de219",
+    "expected_exact_scores": null
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "joint_FSblock_Gstar",
+    "block": "joint few-shot comparison",
+    "path": "predictions/evaluation/DeepSeek/joint_FSblock_Gstar.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "2a56dc7a8c8ede71644ea78a0c78902d6a267d1c4ed35f3f1b5be5249a5e3bcd",
+    "expected_exact_scores": null
+  },
+  {
+    "model": "DeepSeek",
+    "condition": "joint_FS12",
+    "block": "joint few-shot comparison",
+    "path": "predictions/evaluation/DeepSeek/joint_FS12.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "7cb1f40ca4abdde93aa6139b4973bcdf6f8810166e8ba24933bdeca7283a5f1a",
+    "expected_exact_scores": null
+  },
+  {
+    "model": "DeepSeek_max",
+    "condition": "S0",
+    "block": "secondary reasoning-effort comparison",
+    "path": "predictions/evaluation/DeepSeek_max/S0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "353d921e58d1164542cc2854d74a40006d4f6abff174582bdae0cc67db78221f",
+    "expected_exact_scores": {
+      "entity": {
+        "f1": 0.1649954421148587
+      },
+      "relation": {
+        "f1": 0.03129445234708393
+      }
+    }
+  },
+  {
+    "model": "DeepSeek_max",
+    "condition": "G0",
+    "block": "secondary reasoning-effort comparison",
+    "path": "predictions/evaluation/DeepSeek_max/G0.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "764f4e333604849f58674037b7eb812ee86daf83f20d8d28f1638819ab53d205",
+    "expected_exact_scores": {
+      "entity": {
+        "f1": 0.8780336029869321
+      },
+      "relation": {
+        "f1": 0.5423128046078866
+      }
+    }
+  },
+  {
+    "model": "DeepSeek_max",
+    "condition": "Gstar",
+    "block": "secondary reasoning-effort comparison",
+    "path": "predictions/evaluation/DeepSeek_max/Gstar.jsonl",
+    "documents": 38,
+    "prediction_view": "prediction-only normalized",
+    "source_sha256": "9e6ce245387a82410a2020e8273ed69afa8caace67ec99ecd8117b4dc1a04e9d",
+    "expected_exact_scores": {
+      "entity": {
+        "f1": 0.8663033023404937
+      },
+      "relation": {
+        "f1": 0.6538285190279688
+      }
+    }
+  }
+]

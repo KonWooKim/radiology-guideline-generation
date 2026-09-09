@@ -1,0 +1,55 @@
+{
+  "representation": "Report-text-redacted structured guidelines, not the verbatim inference prompt",
+  "source_sha256": "445b086ae7039a5a6abe5ca5482538f8947ef2a22ce5e8bef726d498ab6ce6df",
+  "rule_count": 5,
+  "examples_removed": true,
+  "supporting_report_identifiers_removed": true,
+  "principles": [
+    {
+      "rule_id": "R1",
+      "instruction": "Label anatomical references as ANAT.",
+      "applies_when": "The token or phrase refers to a specific anatomical structure (organ, body part, anatomical region) or a directional/positional modifier that directly describes an anatomical entity. This includes anatomy-specific modifiers like laterality (e.g., 'left', 'right'), orientation (e.g., 'upper', 'lower', 'posterior'), and structural adjectives (e.g., 'pulmonary', 'cardiac', 'pleural').",
+      "exceptions": [],
+      "priority": 1
+    },
+    {
+      "rule_id": "R2",
+      "instruction": "Label definitely present observations as OBS-DP.",
+      "applies_when": "The token describes a clinical finding, descriptor, or measurement that is positively asserted (i.e., the report states or implies it is present). This includes normal findings (e.g., 'clear', 'normal limits'), abnormal findings (e.g., 'cardiomegaly', 'degenerative changes'), and their descriptive attributes when not negated or uncertain.",
+      "exceptions": [
+        "Do not use OBS-DP if the observation is explicitly negated (use OBS-DA).",
+        "Do not use OBS-DP if the observation is uncertain (use OBS-U).",
+        "Anatomical tokens within the observation phrase get ANAT."
+      ],
+      "priority": 2
+    },
+    {
+      "rule_id": "R3",
+      "instruction": "Label explicitly negated observations as OBS-DA.",
+      "applies_when": "The observation is asserted to be absent by a negation cue such as 'no', 'without', 'negative for', 'absence of', 'free of', etc. The scope of negation includes the finding term and its immediate descriptive modifiers. In phrases like 'no evidence of X', the token 'evidence' may also be labeled OBS-DA if negated; however, the finding X is typically also labeled OBS-DA when the overall intent is absence of X.",
+      "exceptions": [
+        "For rare cases where negation is on 'evidence' and the report explicitly leaves the finding itself as possibly present, the finding tokens may be labeled OBS-DP (see the '[report fragment omitted]' treatment in examples). Use context to determine.",
+        "Anatomical tokens within the negated phrase get ANAT."
+      ],
+      "priority": 2
+    },
+    {
+      "rule_id": "R4",
+      "instruction": "Label uncertain or possible observations as OBS-U.",
+      "applies_when": "The observation is presented with linguistic hedging indicating uncertainty, possibility, suspicion, or a differential diagnosis. Common cues include 'may represent', 'could be', 'possibly', 'suspicious for', 'cannot rule out', 'indeterminate', 'consistent with' (when the diagnosis is not definitive).",
+      "exceptions": [
+        "Anatomical tokens get ANAT."
+      ],
+      "priority": 2
+    },
+    {
+      "rule_id": "R5",
+      "instruction": "Annotate spans at token or minimal meaningful unit level, using half-open character offsets.",
+      "applies_when": "Any annotation assignment.",
+      "exceptions": [
+        "Multi-word anatomical terms (e.g., 'thoracic spine', 'ascending aorta') may be annotated as a single span for cohesion, but token-level splitting is also acceptable. Be consistent."
+      ],
+      "priority": 3
+    }
+  ]
+}

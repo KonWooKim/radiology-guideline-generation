@@ -1,0 +1,36 @@
+{
+  "representation": "Report-text-redacted structured guidelines, not the verbatim inference prompt",
+  "source_sha256": "1ddabad9540d1fae0221f5e01662ebf3b37f09122219846ace95a69db9ce2176",
+  "rule_count": 3,
+  "examples_removed": true,
+  "supporting_report_identifiers_removed": true,
+  "principles": [
+    {
+      "rule_id": "R01",
+      "instruction": "Connect an observation or a located entity to the anatomical site where it is found or occurs.",
+      "applies_when": "One entity is a clinical observation (label starting with 'OBS-') and the other is an anatomical structure (label 'ANAT'), or both are ANAT with a clear spatial containment (e.g., one body part inside another). The subject is the entity being located, and the object is the location.",
+      "exceptions": [],
+      "priority": 1,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R02",
+      "instruction": "Link a modifier to the word it describes, indicating a qualifying relationship.",
+      "applies_when": "Two entities form a modifier–head pair (e.g., adjective–noun, attributive noun–noun). Usually the subject is the modifier (e.g., 'large', 'mild', 'right') and the object is the head (e.g., 'effusion', 'changes', 'hilum'). When both are ANAT and the head is a structural feature (e.g., 'contour', 'silhouette', 'size'), the direction may be reversed, but the essential relation is that one term modifies the other.",
+      "exceptions": [],
+      "priority": 2,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R03",
+      "instruction": "Connect a finding or visible feature to a possible diagnosis or uncertain condition that it suggests.",
+      "applies_when": "An observation (often with label OBS-DP) or sometimes an anatomical entity serves as the subject, and the object is an uncertain or differential diagnosis (often with label OBS-U).",
+      "exceptions": [],
+      "priority": 3,
+      "domain": "relation",
+      "status": "active"
+    }
+  ]
+}

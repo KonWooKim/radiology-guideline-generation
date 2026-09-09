@@ -1,0 +1,30 @@
+{
+  "fidelity_note": "The original induction schema did not independently state section scope; the supplied reference annotations embodied the development evidence.",
+  "system": "Return exactly one valid JSON object. Use all evidence and obey the output contract.",
+  "user": {
+    "complete_development_evidence": "{{ALL_12_REPORTS_WITH_REFERENCE_ENTITIES}}",
+    "output_contract": {
+      "deployment_guideline": "self-contained prose",
+      "principles": [
+        {
+          "applies_when": "condition",
+          "examples": [],
+          "exceptions": [],
+          "instruction": "operational rule",
+          "priority": 1,
+          "rule_id": "E01"
+        }
+      ]
+    },
+    "schema": {
+      "entity_labels": [
+        "ANAT",
+        "OBS-DA",
+        "OBS-DP",
+        "OBS-U"
+      ],
+      "offsets": "half-open character offsets"
+    },
+    "task": "Induce a self-contained operational entity annotation guideline from every supplied development example. Generalize; do not memorize document IDs or surface strings."
+  }
+}

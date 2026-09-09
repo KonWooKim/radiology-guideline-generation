@@ -1,0 +1,29 @@
+{
+  "fidelity_note": "The original induction schema did not independently state section scope; relations were induced after freezing E-star development entities.",
+  "system": "Return exactly one valid JSON object. Use all evidence and obey the output contract.",
+  "user": {
+    "complete_development_evidence": "{{ALL_12_REPORTS_WITH_REFERENCE_RELATIONS_AND_FROZEN_E_STAR_ENTITIES}}",
+    "output_contract": {
+      "deployment_guideline": "self-contained prose",
+      "principles": [
+        {
+          "applies_when": "condition",
+          "examples": [],
+          "exceptions": [],
+          "instruction": "operational rule",
+          "priority": 1,
+          "rule_id": "R01"
+        }
+      ]
+    },
+    "schema": {
+      "endpoint_policy": "select only supplied predicted entity IDs",
+      "relation_labels": [
+        "LocatedAt",
+        "Modify",
+        "SuggestiveOf"
+      ]
+    },
+    "task": "Induce a self-contained operational relation annotation guideline from every supplied development example. Generalize; do not memorize document IDs or surface strings."
+  }
+}

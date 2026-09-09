@@ -1,0 +1,32 @@
+{
+  "fidelity_note": "task_schema is the exact report-independent RELATION_SCHEMA constant from lines 41-46 of the executed held-out runner.",
+  "system": "Annotate relations only over immutable_entities. Never create or alter entities. Return one valid JSON object.",
+  "user": {
+    "immutable_entities": "{{ENTITY_PREDICTIONS_FOR_THIS_CONDITION_AND_REPORT}}",
+    "operational_guidance": "{{CONDITION_SPECIFIC_RELATION_GUIDANCE}}",
+    "output_contract": {
+      "relations": {
+        "constraints": [
+          "endpoints are immutable entity IDs",
+          "allowed directed predicate",
+          "unique ordered triple"
+        ],
+        "item_required": [
+          "subj",
+          "pred",
+          "obj"
+        ],
+        "type": "array"
+      },
+      "required": [
+        "relations"
+      ],
+      "type": "object"
+    },
+    "report": {
+      "doc_id": "{{DOC_ID}}",
+      "text": "{{REPORT_TEXT}}"
+    },
+    "task_schema": "RadGraph directed-relation schema:\n- Modify: one observation modifies another observation, or one anatomy entity modifies another anatomy entity.\n- LocatedAt: an observation is located at or associated with an anatomy entity.\n- SuggestiveOf: one observation is suggestive of another observation.\nAnnotate only relations expressed within the FINDINGS and IMPRESSION sections.\nRelations are directed from subject to object. Select endpoints only from immutable_entities; never create or alter an entity."
+  }
+}

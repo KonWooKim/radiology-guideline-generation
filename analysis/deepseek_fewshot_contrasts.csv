@@ -1,0 +1,11 @@
+﻿contrast,first,second,metric,difference,ci95_lower,ci95_upper,replicates,seed,unit,interval
+FS12 - Gstar,FS12_direct_gold,Gstar_refined_guideline_current,entity_exact,0.011465687099616817,-0.013910727634407434,0.03703682039998006,10000,20260804,report,percentile 95%
+FS12 - Gstar,FS12_direct_gold,Gstar_refined_guideline_current,relation_exact,0.019690992439601707,-0.02535651865931553,0.06039334533313224,10000,20260805,report,percentile 95%
+FS12 - G0,FS12_direct_gold,G0_annotation_derived_initial_current,entity_exact,0.032689106857904826,0.005099721420602695,0.058332773433938105,10000,20260904,report,percentile 95%
+FS12 - G0,FS12_direct_gold,G0_annotation_derived_initial_current,relation_exact,0.10038098804485796,0.05254964236499435,0.1455664186071281,10000,20260905,report,percentile 95%
+FS4 - S0,FS4_direct_gold,S0_schema_only_current,entity_exact,0.6832220941388144,0.6375090608359548,0.7274163983852185,10000,20261004,report,percentile 95%
+FS4 - S0,FS4_direct_gold,S0_schema_only_current,relation_exact,0.631925388136664,0.5717471887438178,0.6838646045986143,10000,20261005,report,percentile 95%
+FS8 - FS4,FS8_direct_gold,FS4_direct_gold,entity_exact,0.01083025246700231,-0.006629707588538225,0.029067408160268322,10000,20261104,report,percentile 95%
+FS8 - FS4,FS8_direct_gold,FS4_direct_gold,relation_exact,0.04035874439461884,0.0046687944837595936,0.08133902177530025,10000,20261105,report,percentile 95%
+FS12 - FS8,FS12_direct_gold,FS8_direct_gold,entity_exact,-0.0068896107615392665,-0.029010679558470132,0.01202556572083306,10000,20261204,report,percentile 95%
+FS12 - FS8,FS12_direct_gold,FS8_direct_gold,relation_exact,-0.026048917874299637,-0.062465020828025124,0.004295820758733361,10000,20261205,report,percentile 95%

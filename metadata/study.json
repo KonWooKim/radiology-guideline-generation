@@ -1,0 +1,40 @@
+{
+  "repository": "https://github.com/KonWooKim/radiology-guideline-generation",
+  "release_version": "1.0.0",
+  "created": "2026-09-10",
+  "models": [
+    "DeepSeek V4 Pro high",
+    "GPT-5.6 Terra high",
+    "GPT-5.6 Sol high"
+  ],
+  "secondary_models": [
+    "DeepSeek V4 Pro max"
+  ],
+  "development_reports": 12,
+  "evaluation_reports": 38,
+  "expert_annotators": 1,
+  "entities": 1988,
+  "raw_reference_relations": 1454,
+  "scored_reference_relations": 1452,
+  "heldout_reference_entities": 1586,
+  "heldout_reference_relations": 1167,
+  "trials": 271,
+  "accepted": 54,
+  "api_calls_during_packaging": 0,
+  "excluded": [
+    "report text",
+    "images",
+    "entity surface strings",
+    "author manual",
+    "raw responses",
+    "report-bearing prompts",
+    "withdrawn text-only Author comparator",
+    "invalid empty G0"
+  ],
+  "limitations": [
+    "Single-expert reference, not clinical truth or human consensus",
+    "Single retained model executions",
+    "Development offsets preserve the original selection history",
+    "Public redacted guidelines do not enable exact prompt replay"
+  ]
+}

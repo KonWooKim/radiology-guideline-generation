@@ -1,0 +1,116 @@
+{
+  "representation": "Report-text-redacted structured guidelines, not the verbatim inference prompt",
+  "source_sha256": "a326e4dd7133f96cba93bc1742b7bc07006c427884380382f8b98e282a1fec31",
+  "rule_count": 8,
+  "examples_removed": true,
+  "supporting_report_identifiers_removed": true,
+  "principles": [
+    {
+      "rule_id": "R01",
+      "instruction": "Use only supplied predicted entity IDs as relation endpoints. Resolve every endpoint to the predicted span that covers the intended mention in its local textual context.",
+      "applies_when": "Creating any relation edge.",
+      "exceptions": [
+        "Never reuse source/gold IDs, create a new composite span, or attach an edge to an entity that was not predicted.",
+        "If a concept is split into predicted components, use the available component that is the semantic head or anchor; represent the other available components through their own supported relations rather than inventing a combined entity.",
+        "If either required endpoint is absent from the predicted entities, omit that edge."
+      ],
+      "priority": 1,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R02",
+      "instruction": "Annotate direct, text-supported relations within the same mention, clause, or explicitly repeated report statement. Do not add relations merely because two entities are medically compatible or because one could be inferred from the other.",
+      "applies_when": "Considering candidate entity pairs.",
+      "exceptions": [
+        "Repeated findings in different report sections are separate mentions and may receive separate edges, but do not create cross-mention coreference edges.",
+        "Do not apply transitive closure: a modifier or location of one entity is not automatically a modifier or location of every entity linked to it.",
+        "Clinical history, indications, recommendations, and absent predicted endpoints do not license a relation unless the relevant local statement explicitly connects the supplied entities."
+      ],
+      "priority": 2,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "instruction": "Use LocatedAt only when the proposed anatomical anchor is the finding's own immediate syntactic or semantic attachment in the local assertion. Do not emit LocatedAt when the anchor attaches to an intervening entity, modifier chain, or separate clause; proximity, shared sentence membership, or a broadly related anatomical context is insufficient.",
+      "applies_when": "A candidate LocatedAt edge is considered between supplied entities in a local report statement.",
+      "exceptions": [
+        "Retain an edge for a direct locative construction or direct anatomical attachment, including explicit prepositional location, positional phrasing, or a directly attached anatomical compound.",
+        "Do not reject a direct relation solely because it is negated, uncertain, comparative, or expressed in a nominal phrase.",
+        "When multiple supplied entities occur in a phrase, link a finding only to the anchor it directly localizes; do not propagate that location through another entity."
+      ],
+      "priority": 3,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "R03"
+    },
+    {
+      "instruction": "Use Modify only for a direct local descriptive relation. For ordinary qualifiers (including measurements, morphology, laterality, level, and distribution), direct the edge qualifier-to-head. However, when one endpoint is a named feature/attribute head (for example, contour, silhouette, size, limits) and the other endpoint directly gives that feature's host or state, direct the edge feature-to-host/state; likewise direct a finding head to a directly attached postpositive relational predicate (for example, nodule Modify overlying).",
+      "applies_when": "Entities form a direct descriptive, compound, attribute-value, host-feature, or postpositive predicate construction within one local assertion.",
+      "exceptions": [
+        "Keep qualifier-to-head direction for ordinary anatomical and observation compounds, such as right Modify lobe, 6 mm Modify opacity, and mildly Modify enlarged.",
+        "Use feature-to-host/state only when the feature/entity is the semantic anchor whose host or status is being specified; do not invert a routine prenominal qualifier merely because both endpoints share an entity label.",
+        "Do not emit Modify for a merely predicated normality, stability, clarity, or similar assertion state of an anatomical feature when the relation is not directly represented by the supplied entities.",
+        "Do not skip an explicitly represented intermediate target to attach every qualifier to a final head."
+      ],
+      "priority": 4,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "R04"
+    },
+    {
+      "rule_id": "R05",
+      "instruction": "Use SuggestiveOf for evidential or interpretive relations in which an observed appearance, finding, structure, or feature supports, is consistent with, may represent, or raises the possibility of a diagnostic interpretation, cause, alternative explanation, or clinical significance. Direct the edge from the evidence to the suggested interpretation.",
+      "applies_when": "The report explicitly expresses diagnostic or explanatory uncertainty, consistency, representation, possibility, suspicion, or suggestion between supplied entities.",
+      "exceptions": [
+        "The evidence endpoint may be an observation or an anatomical/structural entity when that structure is the stated evidence.",
+        "A candidate that is itself an anatomical anchor is generally handled with LocatedAt or Modify rather than SuggestiveOf; use SuggestiveOf for the diagnostic, causal, explanatory, or significance interpretation.",
+        "Do not convert every uncertain entity into a SuggestiveOf edge: the text must explicitly connect the evidence and candidate.",
+        "Multiple explicitly offered interpretations may each receive an edge when both endpoints are supplied and the statement supports each one."
+      ],
+      "priority": 5,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R06",
+      "instruction": "Preserve relational structure under negation, normality, uncertainty, and comparison language. These assertion states affect meaning but do not by themselves suppress a supported relation.",
+      "applies_when": "A related entity is described as absent, normal, stable, acute, chronic, uncertain, or compared with prior imaging.",
+      "exceptions": [
+        "Negation does not remove direct location or modification edges for the negated entity.",
+        "Uncertainty alone does not create SuggestiveOf; an explicit evidential or interpretive connection is still required.",
+        "Temporal and certainty terms should be attached with Modify only when they directly qualify a supplied target."
+      ],
+      "priority": 6,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R07",
+      "instruction": "Permit multiple independently supported relations for one entity and permit more than one label for the same ordered pair only when each label has separate textual support.",
+      "applies_when": "A mention has several qualifiers, locations, candidate interpretations, or overlapping structural roles.",
+      "exceptions": [
+        "Do not collapse distinct modifiers into one edge when each is separately predicted and explicitly scoped.",
+        "Do not infer a second relation merely because another label was assigned to the pair.",
+        "For a finding with several explicitly named locations or alternative contextual anchors, emit each supported direct LocatedAt edge without adding inferred hierarchy links."
+      ],
+      "priority": 7,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "rule_id": "R08",
+      "instruction": "Treat predicted entity labels as useful semantic cues, not as mandatory endpoint signatures. Determine the relation from the local assertion and the roles of the entities.",
+      "applies_when": "Entity types appear unusual, fragmented, or differ from expected clinical categories.",
+      "exceptions": [
+        "LocatedAt may connect observation-to-anatomy, anatomy-to-anatomy, or a structural feature to its host anatomy.",
+        "Modify may connect observation-to-observation, anatomy-to-anatomy, or observation-to-anatomy.",
+        "SuggestiveOf may start from an observation or anatomical evidence and normally ends at an interpretation-like entity.",
+        "When segmentation or labeling makes the intended role ambiguous, favor a conservative omission over a speculative edge."
+      ],
+      "priority": 8,
+      "domain": "relation",
+      "status": "active"
+    }
+  ]
+}

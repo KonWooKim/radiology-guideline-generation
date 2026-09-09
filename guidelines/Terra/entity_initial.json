@@ -1,0 +1,111 @@
+{
+  "representation": "Report-text-redacted structured guidelines, not the verbatim inference prompt",
+  "source_sha256": "72b02c4fe26223e55520c9bc6e003d2a969d27aa7137be373b7c39229f02e894",
+  "rule_count": 10,
+  "examples_removed": true,
+  "supporting_report_identifiers_removed": true,
+  "principles": [
+    {
+      "rule_id": "E01",
+      "instruction": "Annotate report content in the diagnostic finding and conclusion portions. Do not annotate examination headers, acquisition metadata, clinical-history/indication text, comparison text, or redaction placeholders.",
+      "applies_when": "Processing a structured imaging report.",
+      "exceptions": [
+        "Anatomical locations mentioned in a conclusion, recommendation, notification, or follow-up statement remain eligible when they are part of the report assessment.",
+        "A repeated finding is annotated again at each textual occurrence, including when restated in the conclusion."
+      ],
+      "priority": 1
+    },
+    {
+      "rule_id": "E02",
+      "instruction": "Use ANAT for anatomical structures, body regions, compartments, tissue types, and anatomical localization components.",
+      "applies_when": "A token or phrase component denotes where a finding is located or the bodily structure being described.",
+      "exceptions": [
+        "Do not use ANAT for a device, surgical procedure, device feature, or finding merely because it is adjacent to anatomy.",
+        "A word with a non-anatomical role is not ANAT even if it can occur in anatomical expressions."
+      ],
+      "priority": 2
+    },
+    {
+      "rule_id": "E03",
+      "instruction": "Split composite anatomical expressions into their separately meaningful lexical components rather than creating one maximal anatomy span.",
+      "applies_when": "A multiword location contains laterality, orientation, level, region, structure, or tissue words.",
+      "exceptions": [
+        "Keep a lexical unit intact when its measurement or observation descriptor is conventionally expressed as one unit.",
+        "Do not create entities for intervening function words, conjunctions, articles, or punctuation solely to bridge components."
+      ],
+      "priority": 3
+    },
+    {
+      "rule_id": "E04",
+      "instruction": "Use OBS-DP for a definitely asserted observation, whether abnormal, normal, stable, postoperative, or device-related.",
+      "applies_when": "The report directly states or affirms an imaging finding, morphology, measurement, quantity, change, normality, position, device, or procedure-related result.",
+      "exceptions": [
+        "Do not assign OBS-DP merely because a word is medically salient; use OBS-U when the finding is explicitly hedged and OBS-DA when directly denied.",
+        "A body-structure word remains ANAT even when the associated observation is OBS-DP."
+      ],
+      "priority": 4
+    },
+    {
+      "rule_id": "E05",
+      "instruction": "Use OBS-DA for the finding target explicitly placed under definite negation or exclusion.",
+      "applies_when": "A direct negative construction denies a finding, pathology, abnormality, or clinically meaningful qualifier.",
+      "exceptions": [
+        "Retain ANAT for the anatomical site within a negative statement.",
+        "Do not label negation cue words, absence verbs, or generic syntax by themselves.",
+        "In negative-evidence constructions, the directly denied evidence/target is OBS-DA; an embedded descriptive phrase may remain OBS-DP if it is analyzed as the described observation rather than the direct negated target."
+      ],
+      "priority": 5
+    },
+    {
+      "rule_id": "E06",
+      "instruction": "Use OBS-U for an observation, diagnosis, etiology, or significance that the report presents as possible, suggested, indeterminate, artifactual, or otherwise unresolved.",
+      "applies_when": "The local assertion is qualified by uncertainty, possibility, conditional interpretation, unknown significance, or a diagnostic alternative.",
+      "exceptions": [
+        "Do not propagate uncertainty from a candidate diagnosis to adjacent anatomy or to a separately established observation.",
+        "A mere coordinated alternative does not automatically make every term OBS-U; use the explicit assertion context and the local semantic role.",
+        "Do not use OBS-U for an established chronic or historical finding when it is directly asserted in that occurrence."
+      ],
+      "priority": 6
+    },
+    {
+      "rule_id": "E07",
+      "instruction": "Determine OBS-DP, OBS-DA, and OBS-U independently for each lexical observation component; do not force an entire noun phrase to share one label.",
+      "applies_when": "A finding phrase combines anatomy, morphology, measurement, diagnostic nouns, qualifiers, or different certainty scopes.",
+      "exceptions": [
+        "Use the local grammatical and assertion scope rather than a global sentence-level polarity when these differ.",
+        "When a modifier is only contextual or temporal rather than part of the denied target, it may remain OBS-DP despite a neighboring negative statement."
+      ],
+      "priority": 7
+    },
+    {
+      "rule_id": "E08",
+      "instruction": "Annotate clinically meaningful observation descriptors at fine granularity, including measurements, numeric dimensions, shape, density/opacity, distribution, chronicity, severity, stability, interval change, projection, and procedural/device descriptors.",
+      "applies_when": "Such a descriptor contributes an imaging observation or materially characterizes one.",
+      "exceptions": [
+        "Do not annotate purely grammatical words or unsupported reporting verbs.",
+        "Do not annotate a recommendation action, modality name, or administrative notification merely because it occurs near an observation."
+      ],
+      "priority": 8
+    },
+    {
+      "rule_id": "E09",
+      "instruction": "Resolve context-sensitive words by their role in the current phrase, not by a fixed lexicon.",
+      "applies_when": "A term can denote anatomy in one context and an observation, device feature, or descriptor in another.",
+      "exceptions": [
+        "Anatomical size, contour, or silhouette components are ANAT when they identify a body structure or structural attribute.",
+        "Size, shape, level, tip, centrality, or distal position is OBS-DP when it describes a lesion, device, or finding rather than anatomy."
+      ],
+      "priority": 9
+    },
+    {
+      "rule_id": "E10",
+      "instruction": "Use exact, non-normalized half-open character offsets and preserve the report's lexical segmentation.",
+      "applies_when": "Producing entity spans.",
+      "exceptions": [
+        "Whitespace, section delimiters, and punctuation are excluded unless they are actually included in the selected source token.",
+        "Do not expand a span to cover neighboring words solely to make a medically complete phrase."
+      ],
+      "priority": 10
+    }
+  ]
+}

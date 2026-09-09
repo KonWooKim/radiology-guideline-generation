@@ -1,0 +1,35 @@
+{
+  "fidelity_note": "task_schema is the exact report-independent ENTITY_SCHEMA constant from lines 34-40 of the executed held-out runner.",
+  "system": "Annotate entities only. Return one valid JSON object; no relations or explanation.",
+  "user": {
+    "offset_reference": "{{INDEXED_REPORT_TEXT}}",
+    "operational_guidance": "{{CONDITION_SPECIFIC_ENTITY_GUIDANCE}}",
+    "output_contract": {
+      "entities": {
+        "constraints": [
+          "unique ID",
+          "integer half-open offsets",
+          "text equals the indexed report slice",
+          "allowed entity label"
+        ],
+        "item_required": [
+          "id",
+          "start",
+          "end",
+          "label",
+          "text"
+        ],
+        "type": "array"
+      },
+      "required": [
+        "entities"
+      ],
+      "type": "object"
+    },
+    "report": {
+      "doc_id": "{{DOC_ID}}",
+      "text": "{{REPORT_TEXT}}"
+    },
+    "task_schema": "RadGraph entity schema:\n- ANAT: an anatomical body part or anatomical structure.\n- OBS-DP: an observation that is definitely present.\n- OBS-DA: an observation that is definitely absent.\n- OBS-U: an observation whose presence is uncertain.\nAnnotate only content within the FINDINGS and IMPRESSION sections; ignore IMAGE, INDICATION, COMPARISON, and other sections.\nAn entity is a continuous text span. Use exact half-open character offsets into the supplied report text."
+  }
+}

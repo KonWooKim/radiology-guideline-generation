@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "reference_reports": 50,
+  "evaluation_conditions": 54,
+  "exact_metric_rows_verified": 100,
+  "trials_verified": 271,
+  "accepted_verified": 54,
+  "checksum_files_verified": 124,
+  "api_calls": 0,
+  "source_fragment_scan": "No six-consecutive-word report fragments in any public payload",
+  "forbidden_secret_patterns": 0,
+  "absolute_user_paths": 0,
+  "xml_reconstruction": "50/50 whole-report hashes matched original local XML",
+  "annotation_rehydration": "50 reports, 1988 spans",
+  "version": "1.0.0"
+}

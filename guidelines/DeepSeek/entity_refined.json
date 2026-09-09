@@ -1,0 +1,94 @@
+{
+  "representation": "Report-text-redacted structured guidelines, not the verbatim inference prompt",
+  "source_sha256": "fdd17baa7e2ac05af28f76eb5dc4fc55e6c3ad73f7bf528199164cb47cd34a38",
+  "rule_count": 7,
+  "examples_removed": true,
+  "supporting_report_identifiers_removed": true,
+  "principles": [
+    {
+      "instruction": "Label anatomical references as ANAT. This includes tokens or phrases referring to a specific anatomical structure (organ, body part, anatomical region), directional/positional modifiers directly describing an anatomical entity (e.g., 'left', 'right', 'bilateral', 'midline', 'upper', 'lower', 'posterior'), structural adjectives (e.g., 'pulmonary', 'cardiac', 'pleural'), and anatomical attribute nouns (e.g., 'size', 'contour', 'silhouette') that quantify or characterize an anatomical property.",
+      "applies_when": "The token or phrase falls into one of the above categories. Anatomical attribute nouns must refer to an explicit or implied anatomical entity (e.g., 'heart size', 'silhouette is ...', 'mediastinal contour').",
+      "exceptions": [
+        "Do not label tokens as ANAT if they refer solely to imaging technique/modality or non-anatomical view descriptors (e.g., 'PA' in 'PA and lateral', 'lateral' in 'lateral view', 'CT', 'MRI').",
+        "Do not label anatomical terms as ANAT when they are used as part of an imaging exam phrase (e.g., 'chest' in 'chest x-ray', 'abdomen' in 'CT abdomen and pelvis', 'spine' in 'MRI spine', 'Chest' in 'Chest 2 views'). In these cases, the anatomical term is not an independent reference but part of the exam description.",
+        "Exclude any adjacent punctuation from the labeled span (e.g., label 'chest' not 'chest,' for 'chest,'). The span should consist only of the word's alphanumeric characters and internal hyphens, without leading/trailing punctuation.",
+        "Do not label anatomical tokens as ANAT when they appear in the INDICATION section of the report (e.g., 'chest' in 'INDICATION: chest pain', 'back' in 'back pain', 'pericardial' in 'pericardial effusion')."
+      ],
+      "priority": 1,
+      "domain": "entity",
+      "status": "active",
+      "rule_id": "R1"
+    },
+    {
+      "instruction": "Label definitely present observations as OBS-DP. This includes the head word of the observation and all modifying tokens (adverbs, prepositions, participles) that are integral to the descriptive phrase, except for function words such as articles, conjunctions, and pronouns.",
+      "applies_when": "The token is part of a phrase that describes a clinical finding, descriptor, or measurement that is positively asserted (i.e., the report states or implies it is present). The phrase may include normal findings (e.g., 'clear', 'normal limits'), abnormal findings (e.g., 'cardiomegaly', 'degenerative changes'), and their descriptive modifiers when not negated or uncertain. This includes tokens like 'within' in 'within normal limits', 'overlying' in 'nodule overlying the rib', 'grossly' in 'grossly clear', 'central' in 'central catheter', 'distal' in 'distal tip', and similar adverbial, prepositional, or participial modifiers.",
+      "exceptions": [
+        "Do not use OBS-DP if the observation is explicitly negated (use OBS-DA).",
+        "Do not use OBS-DP if the observation is uncertain (use OBS-U).",
+        "Anatomical tokens within the observation phrase get ANAT.",
+        "Do not label tokens as OBS-DP if they appear in the INDICATION section of the report (e.g., symptoms or history).",
+        "Do not label articles, conjunctions, or pronouns as OBS-DP."
+      ],
+      "priority": 2,
+      "domain": "entity",
+      "status": "active",
+      "rule_id": "R2"
+    },
+    {
+      "rule_id": "R3",
+      "instruction": "Label explicitly negated observations as OBS-DA.",
+      "applies_when": "The observation is asserted to be absent by a negation cue such as 'no', 'without', 'negative for', 'absence of', 'free of', etc. The scope of negation includes the finding term and its immediate descriptive modifiers. In phrases like 'no evidence of X', the token 'evidence' may also be labeled OBS-DA if negated; however, the finding X is typically also labeled OBS-DA when the overall intent is absence of X.",
+      "exceptions": [
+        "For rare cases where negation is on 'evidence' and the report explicitly leaves the finding itself as possibly present, the finding tokens may be labeled OBS-DP (see the '[report fragment omitted]' treatment in examples). Use context to determine.",
+        "Anatomical tokens within the negated phrase get ANAT."
+      ],
+      "priority": 2,
+      "domain": "entity",
+      "status": "active"
+    },
+    {
+      "instruction": "Label an observation as OBS-U when the report uses language that explicitly questions the existence, significance, or certainty of the observation. This includes observations modified by cues such as 'possible', 'probable', 'may represent', 'could be', 'cannot exclude', 'unknown', 'not determined', 'suggest', 'suggestive of', 'consistent with', or conditional statements like 'if present'. Do not label an observation as OBS-U if it is a definitely present finding merely described with character adjectives (e.g., 'indeterminate opacity' → 'indeterminate' OBS-DP, 'opacity' OBS-DP; 'suspicious nodule' → both OBS-DP). For differential diagnoses using 'versus', each alternative is OBS-DP.",
+      "applies_when": "The token is within the scope of an uncertainty cue and constitutes a core element of the observation (usually a noun or integral adjective), not an uncertainty cue itself.",
+      "exceptions": [
+        "Anatomical tokens within the uncertain phrase get ANAT.",
+        "For 'versus' lists, each item is OBS-DP.",
+        "Do not label uncertainty cue words (e.g., 'possible', 'potential', 'probable', 'suggest', 'consistent') as OBS-U, even if they appear to modify the observation.",
+        "Do not label verbs that lack nominal observational content (e.g., 'located', 'represent') as OBS-U."
+      ],
+      "priority": 2,
+      "domain": "entity",
+      "status": "active",
+      "rule_id": "R4"
+    },
+    {
+      "instruction": "For ANAT, annotate each token individually as a separate span. A token is defined as a maximal sequence of alphanumeric characters and hyphens, separated by whitespace or punctuation. Do not combine multiple tokens into a single span. For example, 'thoracic spine' must be annotated as two ANAT spans: 'thoracic' and 'spine', not as a single span 'thoracic spine'.",
+      "applies_when": "Labeling an anatomical entity (ANAT).",
+      "exceptions": [],
+      "priority": 3,
+      "domain": "entity",
+      "status": "active",
+      "rule_id": "R5"
+    },
+    {
+      "instruction": "When labeling OBS-DP, include the complete measurement expression as a single span (e.g., '6 mm', '1.4 cm', '[report fragment omitted]'). Exclude any trailing sentence punctuation (periods, commas) from the span.",
+      "applies_when": "Labeling a token or phrase as OBS-DP.",
+      "exceptions": [
+        "If the observation term itself includes punctuation (e.g., hyphenated words like 'x-ray'), that punctuation should be included.",
+        "Leading punctuation is generally not present, but include if part of the term."
+      ],
+      "priority": 3,
+      "domain": "entity",
+      "status": "active",
+      "rule_id": "EA013"
+    },
+    {
+      "instruction": "When labeling OBS-DA, exclude any trailing sentence punctuation (periods, commas) from the span. The span should only include the token's alphanumeric characters and internal hyphens.",
+      "applies_when": "The token is labeled as OBS-DA.",
+      "exceptions": [],
+      "priority": 3,
+      "domain": "entity",
+      "status": "active",
+      "rule_id": "EA047"
+    }
+  ]
+}

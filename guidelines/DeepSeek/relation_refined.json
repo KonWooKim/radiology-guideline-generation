@@ -1,0 +1,83 @@
+{
+  "representation": "Report-text-redacted structured guidelines, not the verbatim inference prompt",
+  "source_sha256": "1c6683d4e081a33b98c55d2a8ccc14de52db34992ebf6fd255fdd5bcf5b59997",
+  "rule_count": 7,
+  "examples_removed": true,
+  "supporting_report_identifiers_removed": true,
+  "principles": [
+    {
+      "instruction": "Connect an observation or a located entity to the anatomical site where it is found or occurs.",
+      "applies_when": "One entity is a clinical observation (label starting with 'OBS-') and the other is an anatomical entity (label 'ANAT'). This includes ANAT tokens that are adjectives (e.g., 'cardiac', 'mediastinal', 'pulmonary') or part of compound anatomical phrases. Both entities can also be ANAT with a clear spatial containment or association (e.g., one body part inside another, or an anatomical feature of a structure).",
+      "exceptions": [
+        "Do not predict LocatedAt if the object is an ANAT token that frequently appears in radiological descriptive compounds and does not represent a physical anatomical structure (e.g., 'silhouette', 'contour', 'contours', 'size', 'interspace', 'interspaces', 'region', 'zones'). In such cases, the relation is usually a qualitative modifier–head rather than a true spatial location."
+      ],
+      "priority": 1,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "R01"
+    },
+    {
+      "instruction": "Link a modifier to the word it describes, indicating a qualifying relationship.",
+      "applies_when": "Two entities form a modifier–head pair (e.g., adjective–noun, attributive noun–noun). The subject is typically the modifier (e.g., 'large', 'mild', 'right') and the object is the head (e.g., 'effusion', 'changes', 'hilum'). When both entities are ANAT, predict Modify if the subject is a directional/laterality term (e.g., 'right', 'left', 'upper', 'lower', 'ascending', 'descending', 'anterior', 'posterior', 'medial', 'lateral', 'proximal', 'distal', 'internal', 'external'), an ordinal/numeric term (e.g., '5th', '6th', '10th'), or an organ-derived adjective that is not a common component of fixed radiological compounds (e.g., 'pulmonary', 'thoracic', 'retrocardiac'; exclude 'cardiac', 'mediastinal', 'heart', 'silhouette' when used as modifier). Predict Modify also if the object is a recognized structural feature (e.g., 'vasculature', 'structures', 'contour', 'silhouette', 'size', 'spine', 'arteries', 'veins') AND the subject is a directional/laterality term or a measurement/change term.",
+      "exceptions": [
+        "Do not apply if the subject is an observation (label starts with 'OBS-') and a linking verb (is, are, was, were, appears, remains, etc.) intervenes between the subject and object, indicating predicative usage rather than attributive modification.",
+        "Do not apply if the subject is an anatomical entity (label 'ANAT') and the object is an observation (label starts with 'OBS-').",
+        "Do not apply if the object is a common clinical finding noun (e.g., 'disease', 'effusion', 'atelectasis', 'opacities', 'markings', 'consolidation', 'abnormality', 'nodule', 'opacity', 'appearance', 'sternotomy') and the subject is not a qualitative property descriptor. Qualitative descriptors include size (large, small, massive), severity (mild, moderate, severe, minimal, significant), acuity (acute, chronic), texture or pattern (coarsened, streaky, scattered, diffuse, nodular, rounded, focal), indeterminacy (indeterminate, borderline), and temporal status (stable, interval).",
+        "Do not apply if the object is a generic dimension or measurement term (e.g., 'size', 'contour', 'contours', 'silhouette') and the subject is not a directional/laterality term, an ordinal/numeric term, or a term indicating change of state or measurement (e.g., 'increased', 'decreased', 'enlarged')."
+      ],
+      "priority": 2,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "R02"
+    },
+    {
+      "rule_id": "R03",
+      "instruction": "Connect a finding or visible feature to a possible diagnosis or uncertain condition that it suggests.",
+      "applies_when": "An observation (often with label OBS-DP) or sometimes an anatomical entity serves as the subject, and the object is an uncertain or differential diagnosis (often with label OBS-U).",
+      "exceptions": [],
+      "priority": 3,
+      "domain": "relation",
+      "status": "active"
+    },
+    {
+      "instruction": "For a subject token that is a numeric measurement (contains digits with optional units such as 'cm', 'mm', or dimensions separated by 'x') and bears a label beginning with 'OBS-', predict a Modify relation to the farthest object token that is also labeled 'OBS-*' and belongs to an uninterrupted sequence of 'OBS-*' tokens immediately following the subject.",
+      "applies_when": "Subject is a multi‑word token matching a measurement pattern (digits + optional unit(s)/dimension) and labeled OBS‑*. The object is the last OBS‑* token in a contiguous run of OBS‑* tokens that start directly after the subject.",
+      "exceptions": [
+        "Do not apply if the subject is a list marker (e.g., begins with a digit followed by a period and whitespace, like '1. ')."
+      ],
+      "priority": 1,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "RA008"
+    },
+    {
+      "instruction": "For a pair of observation entities (label starts with 'OBS-'), when the left entity is a qualitative value (e.g., 'normal', 'increased') and the right entity is a dimension or measurement noun (e.g., 'size', 'limits'), and either a preposition intervenes between them or the left entity is immediately preceded by a preposition, predict a Modify relation with the right entity as subject and the left entity as object.",
+      "applies_when": "Both entities have labels starting with 'OBS-'. The left token is typically an adjective or past participle describing a value, and the right token is a noun denoting a measurable attribute. There is a preposition (e.g., 'in', 'within') between the two tokens, or the token immediately preceding the left token is a preposition.",
+      "exceptions": [],
+      "priority": 1,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "RA019"
+    },
+    {
+      "instruction": "Connect a qualitative observation adjective (e.g., 'normal', 'enlarged', 'stable', 'clear', 'small') to the anatomical body part or region it describes, even if the observation is part of a prepositional phrase or separated by a copula, and even if the direct object is a measurement term like 'size', 'contour', or 'silhouette'.",
+      "applies_when": "The subject is an observation (label starts with 'OBS-') that is an adjective or descriptive term of measurement/appearance. The object is an anatomical entity (label 'ANAT') representing a body part or region (e.g., 'heart', 'lungs', 'cardiac', 'mediastinal', 'pulmonary', 'jugular', 'aorta', 'spine', 'hilum', 'stomach', 'interspace', etc.). A syntactic link (via copula, preposition, or possession) associates the observation with the anatomical entity, either directly or through a nominal head like 'size'.",
+      "exceptions": [],
+      "priority": 1,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "RA021"
+    },
+    {
+      "instruction": "For a pair of ANAT entities where the subject is a commonly used radiological descriptor or measurement term (e.g., 'contour', 'size', 'silhouette', 'vascular', 'hilar', 'perihilar', 'soft', 'interspace', 'contours') and the object is a body part, organ, or region term (e.g., 'cardiac', 'mediastinal', 'Heart', 'lung', 'stomach', 'ribs', 'tissues', 'structures'), predict Modify (subject → object).",
+      "applies_when": "Both entities have label ANAT. The subject token is a noun or adjective that denotes a property, feature, or measurement in radiological context. The object token denotes a physical anatomical structure or location.",
+      "exceptions": [
+        "Do not apply if the object is also a property/measurement term (e.g., both are descriptors)."
+      ],
+      "priority": 1,
+      "domain": "relation",
+      "status": "active",
+      "rule_id": "RA022"
+    }
+  ]
+}

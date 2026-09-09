@@ -1,0 +1,21 @@
+{
+  "system": "Annotate relations only over immutable_entities. Never create or modify entities. Return one JSON object.",
+  "user": {
+    "guideline": "{{RENDERED_RELATION_GUIDELINE}}",
+    "immutable_entities": "{{FROZEN_E_STAR_ENTITY_PREDICTIONS}}",
+    "output_contract": {
+      "relations": [
+        {
+          "obj": "T2",
+          "pred": "LocatedAt",
+          "subj": "T1"
+        }
+      ]
+    },
+    "report": {
+      "doc_id": "{{DOC_ID}}",
+      "text": "{{REPORT_TEXT}}"
+    },
+    "rules": "{{CURRENT_RELATION_PRINCIPLES}}"
+  }
+}

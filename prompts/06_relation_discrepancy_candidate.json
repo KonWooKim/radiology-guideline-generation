@@ -1,0 +1,24 @@
+{
+  "fidelity_note": "The public field labels use relation-discrepancy terminology. Historical implementation labels used causal-error wording, but no causal identification was performed and the selection/evaluation behavior is unchanged.",
+  "system": "Return one valid JSON object. Change one relation rule only. Entities are immutable.",
+  "user": {
+    "complete_relation_discrepancy_evidence": "{{ALL_ERRORS_IN_SELECTED_STRATUM}}",
+    "complete_verified_true_positive_contrasts": "{{ALL_CURRENTLY_CORRECT_RELATIONS_FOR_IMPLICATED_PREDICATES}}",
+    "current_principles": "{{CURRENT_ACCEPTED_RELATION_PRINCIPLES}}",
+    "output_contract": {
+      "action": "ADD or REVISE",
+      "principle": {
+        "applies_when": "condition",
+        "examples": [],
+        "exceptions": [],
+        "instruction": "one operational relation rule",
+        "priority": 1
+      },
+      "rationale": "text",
+      "target_rule_id": "existing ID for REVISE; null for ADD"
+    },
+    "prior_decisions": "{{PRIOR_DECISION_HISTORY}}",
+    "selected_relation_discrepancy_stratum": "{{HIGHEST_RANKED_ELIGIBLE_RELATION_STRATUM}}",
+    "task": "Propose exactly one generalizable atomic relation-rule ADD or REVISE that addresses the selected relation discrepancy type without changing entity policy or unrelated predicate modules."
+  }
+}
