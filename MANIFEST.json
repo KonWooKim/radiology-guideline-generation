@@ -159,8 +159,8 @@
     },
     {
       "path": "code/verify_selection_replay.py",
-      "bytes": 4304,
-      "sha256": "720698132bf62dfcba9a2e9f3b59ce719057c8adb77a6ef401cb036be8dcb45b"
+      "bytes": 4719,
+      "sha256": "b59eff9fc05f57779b7005a4621b501b75ec4d6159a69a00fe1a60159d26c220"
     },
     {
       "path": "development/DeepSeek_entity_trials.jsonl",
@@ -199,8 +199,8 @@
     },
     {
       "path": "docs/REPRODUCING.md",
-      "bytes": 14598,
-      "sha256": "a51a2e175ad16e291ed471b2697fe1d35c3b6d4ee6ee7536ac59037a941ed3ab"
+      "bytes": 14585,
+      "sha256": "2ee4a11ad81a2a430c14523bd2dafbbf0b305d85d376d1b564ff9f5a0c108143"
     },
     {
       "path": "guidelines/DeepSeek/entity_initial.json",

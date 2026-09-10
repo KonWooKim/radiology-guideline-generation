@@ -88,7 +88,7 @@ This command is a dry run. It checks the development set and prints the two sequ
 python code/experiment.py develop --workspace /private/study --output /private/new_deepseek --provider deepseek --model deepseek-v4-pro --effort high
 ```
 
-Add `--execute` only when you intend to incur API charges. The first stage generates E0, refines entity guidelines, fixes the final entity predictions, and generates R0. The second stage applies causal discrepancy selection to relation refinement. Every candidate is reannotated on all 12 reports. No evaluation annotation is included in generation inputs. There is no retrospective normalization of development outputs before admission.
+Add `--execute` only when you intend to incur API charges. The first stage generates E0, refines entity guidelines, fixes the final entity predictions, and generates R0. The second stage applies discrepancy-guided relation refinement. Every candidate is reannotated on all 12 reports. No evaluation annotation is included in generation inputs. There is no retrospective normalization of development outputs before admission.
 
 Use `--provider openai --model gpt-5.6-terra`, `--model gpt-5.6-sol`, or DeepSeek `--effort max` to configure the corresponding procedure, subject to provider availability. Provider-defined efforts are not compute-matched. The same effort value does not guarantee the same token budget.
 

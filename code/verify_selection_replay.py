@@ -70,7 +70,12 @@ def main():
                 rejected[sig].add(ranked[0])
         final = folder/('G_star' if phase=='entity' else 'R_star')
         assert guideline==read(final/'guideline.json') and pred==read(final/'predictions.json')
+        census = {k:v for k,v in census_fn(gold,pred).items() if not k.startswith('UNAVAILABLE|')}
+        sig = hashlib.sha256(json.dumps({'g':guideline['principles'],'c':census},sort_keys=True,default=str).encode()).hexdigest()
+        assert not (set(census)-rejected[sig]), (model,phase,'untried categories remain at stopping')
+        counts['exhausted_searches']+=1
     assert counts['trials']==271 and counts['accepted']==54
+    assert counts['exhausted_searches']==6
     print(json.dumps(dict(counts)|{'selection_evidence_apply_admission':'PASS','API_calls':0},indent=2))
 
 
