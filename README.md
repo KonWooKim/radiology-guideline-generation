@@ -38,14 +38,19 @@ by the expert during either round.
   separate from few-shot rerun controls and secondary experiments.
 - `predictions/development/`: initial and refined entity/relation predictions
   on the 12 development reports, with the original selection-time offsets.
-- `guidelines/`: report-text-redacted initial and refined guidelines for each
-  main model, plus summaries of Human v1 and v2.
-- `development/*_trials.jsonl.gz`: all 271 candidate decisions, redacted rules,
-  and complete candidate predictions. Standard gzip-compressed JSON Lines.
-- `prompts/`: report-independent templates. These are not verbatim API requests.
+- `guidelines/`: text-free inspection views. The complete owned guidelines,
+  examples and actual inputs are reconstructable from `reproduction/`.
+- `development/*_trials.jsonl`: all 271 candidate decisions, redacted rules,
+  and complete candidate predictions. Directly inspectable UTF-8 JSON Lines.
+- `prompts/`: short report-independent templates for orientation. Actual prompt
+  builders and retained non-Author request payloads are in the reconstruction bundles.
 - `analysis/`: saved numerical comparisons, label scores, endpoint diagnostics,
   few-shot results, acceptance audits, and five-system pairwise agreement.
-- `code/`: standard-library evaluation, rehydration, and validation utilities.
+- `code/`: evaluation, reconstruction, algorithm replay and new-experiment entry points.
+- `reproduction/`: IU-text-indirect source, inputs, response content, candidate
+  histories, analyses, figure/table generators and available execution metadata.
+  Manuscript drafts and backups are excluded. Numerical inputs needed to rebuild
+  the supplement tables are retained separately.
 - `metadata/`: condition definitions, source hashes, and study scope.
 - `MANIFEST.json` and `SHA256SUMS`: checksums for the published files.
 
@@ -97,6 +102,18 @@ spans. This verifies the local source representation, not continued availability
 of the external download.
 Keep rehydrated data outside this repository.
 
+For full input reconstruction, replay of the recorded algorithm, and new API
+experiments, follow [`docs/REPRODUCING.md`](docs/REPRODUCING.md). Begin with:
+
+```bash
+python code/restore_study.py --reports /private/reports.jsonl --output /private/study
+python code/verify_selection_replay.py --workspace /private/study
+python code/verify_prompt_parity.py --workspace /private/study
+```
+
+New experiments require an explicit `--execute` flag and your own API access.
+The release tests make no model inference calls.
+
 ## Interpreting the conditions
 
 - `S0`: shared minimal natural-language task instructions. It is not a prompt
@@ -128,11 +145,11 @@ The development archives preserve selection-time numeric offsets. Later
 evaluation normalization must not be retroactively treated as the procedure used
 to select development revisions.
 
-Report-bearing examples and supporting report identifiers were removed from
-public guidelines. Embedded quotations and detected report fragments were also
-redacted. These files support rule inspection but do not reproduce the exact
-inference prompts or enable exact replay of guideline generation. Human guideline
-summaries are editorial descriptions, not the actual Human v1 prompt.
+The small text-free guideline files are inspection views, not inference inputs.
+The reconstruction bundles preserve the complete owned rules, examples and
+supporting identifiers using references to separately obtained IU reports.
+They restore the actual Human v1 input and generated guideline artifacts.
+The original Author manual and its request bodies remain excluded.
 
 Single-expert agreement is not clinical correctness or human consensus. Shared
 AI predictions do not adjudicate disputed annotations. The two annotation rounds
@@ -143,8 +160,10 @@ comparison is not an effort-only intervention with fixed instructions.
 
 ## Exclusions and licenses
 
-IU report text/images, raw model responses and reasoning, report-bearing prompts,
-the original Author manual, model checkpoints, and credentials are excluded.
+IU report text/images, provider hidden reasoning, the original Author manual and
+its prompt renderings, model checkpoints, and credentials are excluded. Final-answer
+response content, usage metadata and non-Author request payloads are distributed
+through text-indirect reconstruction bundles, not as embedded IU report text.
 See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
 Author-created annotation layers and documentation use CC BY 4.0

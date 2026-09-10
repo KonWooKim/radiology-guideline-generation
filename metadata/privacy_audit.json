@@ -1,0 +1,24 @@
+{
+  "scope": "Current public files, nested JSON content, and reconstruction literals with source references unresolved",
+  "credential_pattern_findings": 0,
+  "private_author_passage_findings": 0,
+  "literal_IU_six_word_fragment_findings": 0,
+  "literal_IU_indexed_token_findings": 0,
+  "source_bearing_field_findings": 0,
+  "personal_path_findings": 0,
+  "structural_issues": 0,
+  "restoration_hashes_checked": 12802,
+  "available_original_source_hashes_checked": 12798,
+  "nested_JSON_strings_checked": 7958,
+  "short_shared_phrases_reviewed": 10,
+  "short_phrase_categories": [
+    "Study scope instructions",
+    "Public schema definitions",
+    "Label-name mappings"
+  ],
+  "API_calls": 0,
+  "limitations": [
+    "These checks apply to this package, not all remote unreferenced objects.",
+    "Pattern, field-aware and passage screening cannot prove absence of every possible sensitive string."
+  ]
+}

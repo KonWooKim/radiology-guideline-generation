@@ -1,0 +1,4 @@
+# Only for intentionally rerunning paid experiments. Historical package versions,
+# where recorded, remain in the run manifests. No API test is part of release QA.
+openai
+psutil

@@ -1,6 +1,6 @@
 {
   "repository": "https://github.com/KonWooKim/radiology-guideline-generation",
-  "release_version": "1.0.0",
+  "release_version": "1.1.0",
   "created": "2026-09-10",
   "models": [
     "DeepSeek V4 Pro high",
@@ -26,8 +26,8 @@
     "images",
     "entity surface strings",
     "author manual",
-    "raw responses",
-    "report-bearing prompts",
+    "provider hidden reasoning",
+    "author-manual request bodies",
     "withdrawn text-only Author comparator",
     "invalid empty G0"
   ],
@@ -35,6 +35,8 @@
     "Single-expert reference, not clinical truth or human consensus",
     "Single retained model executions",
     "Development offsets preserve the original selection history",
-    "Public redacted guidelines do not enable exact prompt replay"
+    "IU XML and model access must be obtained separately",
+    "Original Author-condition generation requires the excluded manual",
+    "Saved-output replay is not a guarantee of identical future LLM generations"
   ]
 }

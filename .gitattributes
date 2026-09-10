@@ -1,0 +1,2 @@
+# Preserve checksum-verified file bytes on every platform, including Windows.
+* -text

@@ -1,0 +1,17 @@
+{
+  "format": "UTF-8 JSONL",
+  "reconstruction_records": 12802,
+  "compressed_files_in_package": 0,
+  "report_text_reference_forms": [
+    "plain",
+    "json",
+    "ascii",
+    "lower",
+    "upper",
+    "indexed",
+    "indexed_json",
+    "indexed_ascii"
+  ],
+  "restored_report_content_must_remain_private": true,
+  "original_experiments_modified": false
+}

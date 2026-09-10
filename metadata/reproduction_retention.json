@@ -1,0 +1,19 @@
+{
+  "status": "validated",
+  "retained_records": 12802,
+  "original_experiments_modified": false,
+  "retained": [
+    "Owned experimental inputs and all candidate decisions",
+    "Final-answer responses and parsed/normalized predictions",
+    "Usage, timing, retries and provenance required for resource verification",
+    "Executable source and numerical table inputs"
+  ],
+  "excluded": [
+    "Unused status narratives and plans",
+    "Manuscript drafts and backups",
+    "Private Author inputs and quotation indexes"
+  ],
+  "historical_numerical_rows_retained": 40,
+  "offline_replay_checks_passed": 25,
+  "recovery": "Original records and pre-cleanup packages are retained privately by the study authors."
+}

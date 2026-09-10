@@ -1,0 +1,23 @@
+{
+  "files": 12802,
+  "round_trip_verified": 12802,
+  "archives": 50,
+  "format": "UTF-8 JSONL",
+  "source_runs_modified": false,
+  "API_calls": 0,
+  "excluded": [
+    "Original IU report text and images",
+    "Original Author manual and its prompt renderings",
+    "Provider hidden reasoning and credentials",
+    "Manuscript drafts and backups",
+    "Withdrawn and invalid conditions"
+  ],
+  "source_hash_note": "Source hashes identify the retained original artifacts. Restored hashes verify the published sanitized representation before path relocation.",
+  "release_text_edits": [
+    {
+      "path": "original resources/Radgraph_Annotation_2.md",
+      "edit": "One unrelated external-corpus example filename replaced by a neutral placeholder.",
+      "experimental_inputs_changed": false
+    }
+  ]
+}

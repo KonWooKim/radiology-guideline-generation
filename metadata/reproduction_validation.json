@@ -1,0 +1,298 @@
+{
+  "status": "PASS",
+  "API_calls": 0,
+  "restorable_artifacts": 12802,
+  "report_hashes": 50,
+  "reference_spans": 1988,
+  "development_trials": 271,
+  "accepted": 54,
+  "non_author_request_payloads_verified": 684,
+  "checks": [
+    {
+      "command": [
+        "python",
+        "code/verify_selection_replay.py",
+        "--workspace",
+        "<private-study>"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/verify_prompt_parity.py",
+        "--workspace",
+        "<private-study>"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/offline_analysis.py",
+        "--workspace",
+        "<private-study>",
+        "--script",
+        "analyze_three_model_mechanisms_20260906.py"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/offline_analysis.py",
+        "--workspace",
+        "<private-study>",
+        "--script",
+        "extend_cross_system_agreement_20260907.py"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/offline_analysis.py",
+        "--workspace",
+        "<private-study>",
+        "--script",
+        "audit_three_model_acceptance_20260908.py"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/offline_analysis.py",
+        "--workspace",
+        "<private-study>",
+        "--script",
+        "analyze_author_routed_joint_20260907.py"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/offline_analysis.py",
+        "--workspace",
+        "<private-study>",
+        "--script",
+        "build_compact_supplement_20260910.py",
+        "--check"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/offline_analysis.py",
+        "--workspace",
+        "<private-study>",
+        "--script",
+        "build_section36_examples_20260909.py"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/rebuild_checkpoint_input_zip.py",
+        "--workspace",
+        "<private-study>"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/offline_analysis.py",
+        "--workspace",
+        "<private-study>",
+        "--script",
+        "build_aligned_radgraph_relations.py"
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "checkpoint realignment equals original 50 predictions",
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/offline_analysis.py",
+        "--workspace",
+        "<private-study>",
+        "--script",
+        "analyze_deepseek_fewshot_budget.py",
+        "--run",
+        "<private-study>\\llm_preliminary\\runs\\deepseek_v4_pro_high_fewshot_4_8_12_20260828_run01"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/offline_analysis.py",
+        "--workspace",
+        "<private-study>",
+        "--script",
+        "analyze_sol_fewshot_budget.py",
+        "--run",
+        "<private-study>\\llm_preliminary\\runs\\gpt_5_6_sol_high_fewshot_4_8_12_20260829_run01"
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "metrics equals published source rows",
+      "rows": 64,
+      "status": "PASS"
+    },
+    {
+      "check": "contrasts equals published source rows",
+      "rows": 52,
+      "status": "PASS"
+    },
+    {
+      "check": "label_metrics equals published source rows",
+      "rows": 224,
+      "status": "PASS"
+    },
+    {
+      "check": "endpoint_diagnostics equals published source rows",
+      "rows": 32,
+      "status": "PASS"
+    },
+    {
+      "check": "normality_sensitivity equals published source rows",
+      "rows": 18,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/experiment.py",
+        "develop",
+        "--workspace",
+        "<private-study>",
+        "--output",
+        "<local-output-root>\\tmp\\deepseek-v4-pro_develop_dryrun",
+        "--provider",
+        "deepseek",
+        "--model",
+        "deepseek-v4-pro"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/experiment.py",
+        "evaluate",
+        "--workspace",
+        "<private-study>",
+        "--output",
+        "<local-output-root>\\tmp\\deepseek-v4-pro_evaluate_dryrun",
+        "--provider",
+        "deepseek",
+        "--model",
+        "deepseek-v4-pro",
+        "--minimal"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/experiment.py",
+        "develop",
+        "--workspace",
+        "<private-study>",
+        "--output",
+        "<local-output-root>\\tmp\\gpt-5.6-terra_develop_dryrun",
+        "--provider",
+        "openai",
+        "--model",
+        "gpt-5.6-terra"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/experiment.py",
+        "evaluate",
+        "--workspace",
+        "<private-study>",
+        "--output",
+        "<local-output-root>\\tmp\\gpt-5.6-terra_evaluate_dryrun",
+        "--provider",
+        "openai",
+        "--model",
+        "gpt-5.6-terra",
+        "--minimal"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/experiment.py",
+        "develop",
+        "--workspace",
+        "<private-study>",
+        "--output",
+        "<local-output-root>\\tmp\\gpt-5.6-sol_develop_dryrun",
+        "--provider",
+        "openai",
+        "--model",
+        "gpt-5.6-sol"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/experiment.py",
+        "evaluate",
+        "--workspace",
+        "<private-study>",
+        "--output",
+        "<local-output-root>\\tmp\\gpt-5.6-sol_evaluate_dryrun",
+        "--provider",
+        "openai",
+        "--model",
+        "gpt-5.6-sol",
+        "--minimal"
+      ],
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "code/experiment.py",
+        "evaluate",
+        "--workspace",
+        "<private-study>",
+        "--output",
+        "<local-output-root>\\tmp\\fs12_release_dryrun",
+        "--provider",
+        "deepseek",
+        "--model",
+        "deepseek-v4-pro",
+        "--fewshot",
+        "12",
+        "--demo-plan",
+        "<private-study>\\llm_preliminary\\deepseek_high_fewshot_4_8_12_plan.json"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "limits": [
+    "No fresh model inference was performed.",
+    "Historical model availability is external.",
+    "Author document and its prompt renderings excluded.",
+    "Not every historical helper is independently tested.",
+    "Font-dependent PDF byte identity is not asserted."
+  ]
+}

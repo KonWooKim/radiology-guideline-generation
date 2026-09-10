@@ -62,10 +62,11 @@ def main():
                 require(abs(scores[key][k]-v)<1e-12,f"Score mismatch: {c['model']} {c['condition']} {kind} {k}")
             metrics_checked+=1
     total=accepted=0
-    for p in sorted((ROOT/'development').glob('*_trials.jsonl.gz')):
+    for p in sorted((ROOT/'development').glob('*_trials.jsonl*')):
         model,phase=p.name.split('_')[:2]
         phase=phase.split('.')[0]
-        history=[json.loads(s) for s in gzip.decompress(p.read_bytes()).decode().splitlines()]
+        raw=gzip.decompress(p.read_bytes()).decode() if p.suffix=='.gz' else p.read_text(encoding='utf-8')
+        history=[json.loads(s) for s in raw.splitlines()]
         current=development_score(dev,rows(ROOT/f'predictions/development/{model}/{phase}_initial.jsonl'),phase)
         for item in history:
             for r in item['predictions']: checkgraph(r)
